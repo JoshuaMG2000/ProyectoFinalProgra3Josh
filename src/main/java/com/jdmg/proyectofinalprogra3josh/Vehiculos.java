@@ -110,13 +110,14 @@ public class Vehiculos {
     //Mostrar Datos Vehiculo
     @Override
     public String toString() {
-        return "Vehículo [Placa: " + placa
-                + ", DPI: " + dpi
-                + ", Propietario: " + nombrePropietario
-                + ", Marca: " + marca
-                + ", Modelo: " + modelo
-                + ", Año: " + anio
-                + ", Multas: " + cantidadMultas
-                + ", Traspasos: " + cantidadTraspasos + "]";
+        return "VEHICULO \n"
+                + "PLACA: " + placa + "\n"
+                + "DPI: " + dpi + "\n"
+                + "Propietario: " + nombrePropietario + "\n"
+                + "Marca: " + marca + "\n"
+                + "Modelo: " + modelo + "\n"
+                + "Anio: " + anio + "\n"
+                + "Multas: " + cantidadMultas + "\n"
+                + "Traspasos: " + cantidadTraspasos + "\n";
     }
 }
