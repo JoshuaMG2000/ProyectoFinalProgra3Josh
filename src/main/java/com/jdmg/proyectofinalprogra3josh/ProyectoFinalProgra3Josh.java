@@ -1,7 +1,6 @@
 package com.jdmg.proyectofinalprogra3josh;
 
 import javax.swing.JOptionPane;
-import java.util.List;
 
 public class ProyectoFinalProgra3Josh {
 
@@ -20,7 +19,8 @@ public class ProyectoFinalProgra3Josh {
                         + "5. Recorrer el Árbol PostOrden\n"
                         + "6. Buscar Vehículo por Placa\n"
                         + "7. Salir\n"
-                        + "Elige una Opción...", "SIRVE - Sistema Vehicular", JOptionPane.QUESTION_MESSAGE));
+                        + "8. Eliminar Vehículo por Placa\n"
+                        + "Elige una Opción...", "SIRVE - Sistema Vehicular ABB", JOptionPane.QUESTION_MESSAGE));
 
                 switch (opcion) {
                     case 1:
@@ -38,12 +38,7 @@ public class ProyectoFinalProgra3Josh {
                         break;
 
                     case 2:
-                        String ruta = JOptionPane.showInputDialog("Ingrese la ruta del archivo .txt");
-                        List<Vehiculos> listaVehiculos = gestor.leerVehiculos(ruta);
-                        for (Vehiculos v : listaVehiculos) {
-                            arbolito.AgregarVehiculo(v);
-                        }
-                        JOptionPane.showMessageDialog(null, "Vehículos cargados: " + listaVehiculos.size());
+                        gestor.cargarVehiculosDesdeArchivo(arbolito);
                         break;
 
                     case 3:
@@ -83,6 +78,24 @@ public class ProyectoFinalProgra3Josh {
 
                     case 7:
                         JOptionPane.showMessageDialog(null, "Aplicación Finalizada");
+                        break;
+
+                    case 8:
+                        if (!arbolito.EstaVacio()) {
+                            String placaEliminar = JOptionPane.showInputDialog("Ingrese la placa del vehículo a eliminar");
+                            Vehiculos eliminado = arbolito.EliminarVehiculo(placaEliminar);
+                            if (eliminado != null) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Vehículo eliminado:\n" + eliminado.toString(),
+                                        "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(null,
+                                        "No se encontró ningún vehículo con la placa: " + placaEliminar,
+                                        "No Encontrado", JOptionPane.WARNING_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El árbol está vacío.");
+                        }
                         break;
 
                     default:
