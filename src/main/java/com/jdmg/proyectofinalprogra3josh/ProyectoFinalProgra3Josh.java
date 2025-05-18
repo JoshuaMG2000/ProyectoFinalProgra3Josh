@@ -1,5 +1,18 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+public class ProyectoFinalProgra3Josh {
+
+    public static void main(String[] args) {
+        // Solo esto es necesario: ejecuta el JFrame en el hilo de interfaz gráfica (Swing)
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new ventanaPrincipal().setVisible(true);
+        });
+    }
+}
+
+
+/*package com.jdmg.proyectofinalprogra3josh;
+
 import javax.swing.JOptionPane;
 
 public class ProyectoFinalProgra3Josh {
@@ -109,3 +122,4 @@ public class ProyectoFinalProgra3Josh {
         } while (opcion != 7);
     }
 }
+ */
