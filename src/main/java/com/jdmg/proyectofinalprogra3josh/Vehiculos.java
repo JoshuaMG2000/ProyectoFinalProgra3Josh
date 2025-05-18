@@ -111,13 +111,13 @@ public class Vehiculos {
     @Override
     public String toString() {
         return "VEHICULO \n"
-                + "PLACA: " + placa + "\n"
+                + "PLACA : " + placa + "\n"
                 + "DPI: " + dpi + "\n"
-                + "Propietario: " + nombrePropietario + "\n"
-                + "Marca: " + marca + "\n"
-                + "Modelo: " + modelo + "\n"
-                + "Anio: " + anio + "\n"
-                + "Multas: " + cantidadMultas + "\n"
-                + "Traspasos: " + cantidadTraspasos + "\n";
+                + "PROPIETARIO: " + nombrePropietario + "\n"
+                + "MARCA : " + marca + "\n"
+                + "MODELO : " + modelo + "\n"
+                + "AÑO : " + anio + "\n"
+                + "MULTAS : " + cantidadMultas + "\n"
+                + "TRASPASOS : " + cantidadTraspasos + "\n";
     }
 }
