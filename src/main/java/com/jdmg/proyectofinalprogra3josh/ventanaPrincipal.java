@@ -83,6 +83,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnbuscarABB = new javax.swing.JButton();
         jtextFieldPlaca = new javax.swing.JTextField();
         btnEliminarVehiculoABB = new javax.swing.JButton();
+        btnModificarABB = new javax.swing.JButton();
+        btnInsertarABB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,12 +114,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             tablaVehiculosABB.getColumnModel().getColumn(7).setPreferredWidth(70);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 900, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 900, 180));
 
         cargarVehiculosABB.setBackground(new java.awt.Color(91, 108, 143));
         cargarVehiculosABB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cargarVehiculosABB.setForeground(new java.awt.Color(255, 255, 255));
         cargarVehiculosABB.setText("CARGAR DATOS");
+        cargarVehiculosABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cargarVehiculosABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargarVehiculosABB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +133,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnInOrden.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnInOrden.setForeground(new java.awt.Color(0, 0, 0));
         btnInOrden.setText("IN-ORDEN");
+        btnInOrden.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnInOrden.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +146,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnPreOrden.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPreOrden.setForeground(new java.awt.Color(0, 0, 0));
         btnPreOrden.setText("PRE-ORDEN");
+        btnPreOrden.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPreOrden.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPreOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +159,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnPostOrden.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPostOrden.setForeground(new java.awt.Color(0, 0, 0));
         btnPostOrden.setText("POST-ORDEN");
+        btnPostOrden.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPostOrden.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPostOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,17 +171,18 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("-------------------------- ORDENAMIENTOS  -----------------------");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 350, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DATOS DE VEHICULOS (ABB)");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         btnbuscarABB.setBackground(new java.awt.Color(91, 108, 143));
         btnbuscarABB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnbuscarABB.setForeground(new java.awt.Color(255, 255, 255));
         btnbuscarABB.setText("BUSCAR POR PLACA:");
+        btnbuscarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnbuscarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnbuscarABB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,13 +198,40 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnEliminarVehiculoABB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEliminarVehiculoABB.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarVehiculoABB.setText("ELIMINAR");
+        btnEliminarVehiculoABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEliminarVehiculoABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarVehiculoABB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarVehiculoABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarVehiculoABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 160, 110, -1));
+        jPanel1.add(btnEliminarVehiculoABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 90, -1));
+
+        btnModificarABB.setBackground(new java.awt.Color(115, 108, 201));
+        btnModificarABB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnModificarABB.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificarABB.setText("MODIFICAR");
+        btnModificarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnModificarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, 110, -1));
+
+        btnInsertarABB.setBackground(new java.awt.Color(115, 108, 201));
+        btnInsertarABB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnInsertarABB.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsertarABB.setText("INSERTAR");
+        btnInsertarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInsertarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInsertarABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnInsertarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 110, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -268,7 +302,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         llenarTablaPostOrden(arbolito.raiz, modelo);
     }//GEN-LAST:event_btnPostOrdenActionPerformed
 
-    //ORDENAMIENTO IN-ORDEN ABB
+
     private void btnInOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInOrdenActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
         modelo.setRowCount(0); // limpiar tabla
@@ -276,6 +310,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInOrdenActionPerformed
 
     private void btnbuscarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarABBActionPerformed
+        Cronometro cronometro = new Cronometro();
+        cronometro.iniciar();
+
         if (!arbolito.EstaVacio()) {
             String placaBuscada = jtextFieldPlaca.getText().trim().toUpperCase(); // Limpia y estandariza
 
@@ -288,15 +325,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
             if (resultado != null) {
                 JOptionPane.showMessageDialog(this,
-                        "Vehículo encontrado:\n" + resultado.vehiculo.toString(),
+                        "Vehículo encontrado:\n" + resultado.vehiculo.toString()+ "\n" + cronometro.detenerComoTexto(),
                         "Resultado de búsqueda", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this,
-                        "Vehículo no encontrado con placa: " + placaBuscada,
+                        "Vehículo no encontrado con placa: " + placaBuscada+ "\n" + cronometro.detenerComoTexto(),
                         "No encontrado", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "El árbol está vacío.");
+            JOptionPane.showMessageDialog(this, "El árbol está vacío." + "\n" + cronometro.detenerComoTexto());
         }
     }//GEN-LAST:event_btnbuscarABBActionPerformed
 
@@ -322,6 +359,82 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el vehículo en el ABB.");
         }
     }//GEN-LAST:event_btnEliminarVehiculoABBActionPerformed
+
+    private void btnModificarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarABBActionPerformed
+        int filaSeleccionada = tablaVehiculosABB.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fila para modificar.");
+            return;
+        }
+
+        String placa = tablaVehiculosABB.getValueAt(filaSeleccionada, 0).toString();
+
+        boolean modificado = arbolito.modificarDatosVehiculo(placa);
+
+        if (modificado) {
+            // Refrescar la fila directamente (o la tabla entera si prefieres)
+            NodoArbol nodo = arbolito.BuscarVehiculo(placa);
+            Vehiculos v = nodo.vehiculo;
+
+            DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
+            modelo.setValueAt(v.getDpi(), filaSeleccionada, 1);
+            modelo.setValueAt(v.getNombrePropietario(), filaSeleccionada, 2);
+            modelo.setValueAt(v.getMarca(), filaSeleccionada, 3);
+            modelo.setValueAt(v.getModelo(), filaSeleccionada, 4);
+            modelo.setValueAt(v.getAnio(), filaSeleccionada, 5);
+            modelo.setValueAt(v.getCantidadMultas(), filaSeleccionada, 6);
+            modelo.setValueAt(v.getCantidadTraspasos(), filaSeleccionada, 7);
+
+            JOptionPane.showMessageDialog(this, "Vehículo modificado con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el vehículo para modificar.");
+        }
+    }//GEN-LAST:event_btnModificarABBActionPerformed
+
+    private void btnInsertarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarABBActionPerformed
+        try {
+            String placa = JOptionPane.showInputDialog("Ingrese la placa:");
+            if (placa == null || placa.trim().isEmpty()) {
+                return;
+            }
+
+            if (arbolito.BuscarVehiculo(placa) != null) {
+                JOptionPane.showMessageDialog(this, "Ya existe un vehículo con esa placa.");
+                return;
+            }
+
+            String dpi = JOptionPane.showInputDialog("Ingrese el DPI del propietario:");
+            String nombre = JOptionPane.showInputDialog("Ingrese el Nombre del propietario:");
+            String marca = JOptionPane.showInputDialog("Ingrese la marca:");
+            String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");
+            int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año:"));
+            int multas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de multas:"));
+            int traspasos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de traspasos:"));
+
+            Vehiculos nuevo = new Vehiculos(placa.toUpperCase(), dpi, nombre, marca, modelo, anio, multas, traspasos);
+
+            if (arbolito.insertarVehiculo(nuevo)) {
+                // Insertar al final del JTable
+                DefaultTableModel modeloTabla = (DefaultTableModel) tablaVehiculosABB.getModel();
+                Object[] fila = {
+                    nuevo.getPlaca(), nuevo.getDpi(), nuevo.getNombrePropietario(),
+                    nuevo.getMarca(), nuevo.getModelo(), nuevo.getAnio(),
+                    nuevo.getCantidadMultas(), nuevo.getCantidadTraspasos()
+                };
+                modeloTabla.addRow(fila);
+
+                JOptionPane.showMessageDialog(this, "Vehículo insertado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo insertar el vehículo.");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en datos numéricos: " + e.getMessage());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnInsertarABBActionPerformed
 
     private void llenarTablaInOrden(NodoArbol nodo, DefaultTableModel modelo) {
         if (nodo != null) {
@@ -386,6 +499,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarVehiculoABB;
     private javax.swing.JButton btnInOrden;
+    private javax.swing.JButton btnInsertarABB;
+    private javax.swing.JButton btnModificarABB;
     private javax.swing.JButton btnPostOrden;
     private javax.swing.JButton btnPreOrden;
     private javax.swing.JButton btnbuscarABB;

@@ -1,5 +1,6 @@
-
 package com.jdmg.proyectofinalprogra3josh;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +12,15 @@ public class ArbolBinario {
 
     public ArbolBinario() {
         raiz = null;
+    }
+
+    //Para comparar duplicados y proteger al ABB de los mismos
+    public boolean insertarVehiculo(Vehiculos v) {
+        if (BuscarVehiculo(v.getPlaca()) != null) {
+            return false; // Ya existe una placa igual
+        }
+        AgregarVehiculo(v);
+        return true;
     }
 
     // Inserta usando la placa como clave
@@ -88,91 +98,116 @@ public class ArbolBinario {
     }
 
     public Vehiculos EliminarVehiculo(String placa) {
-    NodoArbol actual = raiz;
-    NodoArbol padre = null;
-    boolean esHijoIzquierdo = true;
+        NodoArbol actual = raiz;
+        NodoArbol padre = null;
+        boolean esHijoIzquierdo = true;
 
-    // Buscar el nodo
-    while (actual != null && !actual.vehiculo.getPlaca().equals(placa)) {
-        padre = actual;
-        if (placa.compareTo(actual.vehiculo.getPlaca()) < 0) {
-            esHijoIzquierdo = true;
+        // Buscar el nodo
+        while (actual != null && !actual.vehiculo.getPlaca().equals(placa)) {
+            padre = actual;
+            if (placa.compareTo(actual.vehiculo.getPlaca()) < 0) {
+                esHijoIzquierdo = true;
+                actual = actual.HijoIzquierdo;
+            } else {
+                esHijoIzquierdo = false;
+                actual = actual.HijoDerecho;
+            }
+        }
+
+        if (actual == null) {
+            return null; // No se encontró
+        }
+
+        Vehiculos eliminado = actual.vehiculo;
+
+        // Caso 1: El nodo es una hoja
+        if (actual.HijoIzquierdo == null && actual.HijoDerecho == null) {
+            if (actual == raiz) {
+                raiz = null;
+            } else if (esHijoIzquierdo) {
+                padre.HijoIzquierdo = null;
+            } else {
+                padre.HijoDerecho = null;
+            }
+        } // Caso 2: El nodo tiene un solo hijo (derecho)
+        else if (actual.HijoIzquierdo == null) {
+            if (actual == raiz) {
+                raiz = actual.HijoDerecho;
+            } else if (esHijoIzquierdo) {
+                padre.HijoIzquierdo = actual.HijoDerecho;
+            } else {
+                padre.HijoDerecho = actual.HijoDerecho;
+            }
+        } // Caso 2: El nodo tiene un solo hijo (izquierdo)
+        else if (actual.HijoDerecho == null) {
+            if (actual == raiz) {
+                raiz = actual.HijoIzquierdo;
+            } else if (esHijoIzquierdo) {
+                padre.HijoIzquierdo = actual.HijoIzquierdo;
+            } else {
+                padre.HijoDerecho = actual.HijoIzquierdo;
+            }
+        } // Caso 3: El nodo tiene dos hijos
+        else {
+            NodoArbol reemplazo = obtenerReemplazo(actual);
+            if (actual == raiz) {
+                raiz = reemplazo;
+            } else if (esHijoIzquierdo) {
+                padre.HijoIzquierdo = reemplazo;
+            } else {
+                padre.HijoDerecho = reemplazo;
+            }
+            reemplazo.HijoIzquierdo = actual.HijoIzquierdo;
+        }
+
+        return eliminado;
+    }
+
+    private NodoArbol obtenerReemplazo(NodoArbol nodoReemplazar) {
+        NodoArbol reemplazoPadre = nodoReemplazar;
+        NodoArbol reemplazo = nodoReemplazar;
+        NodoArbol actual = nodoReemplazar.HijoDerecho;
+
+        while (actual != null) {
+            reemplazoPadre = reemplazo;
+            reemplazo = actual;
             actual = actual.HijoIzquierdo;
-        } else {
-            esHijoIzquierdo = false;
-            actual = actual.HijoDerecho;
         }
-    }
 
-    if (actual == null) {
-        return null; // No se encontró
-    }
-
-    Vehiculos eliminado = actual.vehiculo;
-
-    // Caso 1: El nodo es una hoja
-    if (actual.HijoIzquierdo == null && actual.HijoDerecho == null) {
-        if (actual == raiz) {
-            raiz = null;
-        } else if (esHijoIzquierdo) {
-            padre.HijoIzquierdo = null;
-        } else {
-            padre.HijoDerecho = null;
+        if (reemplazo != nodoReemplazar.HijoDerecho) {
+            reemplazoPadre.HijoIzquierdo = reemplazo.HijoDerecho;
+            reemplazo.HijoDerecho = nodoReemplazar.HijoDerecho;
         }
+
+        return reemplazo;
     }
-    // Caso 2: El nodo tiene un solo hijo (derecho)
-    else if (actual.HijoIzquierdo == null) {
-        if (actual == raiz) {
-            raiz = actual.HijoDerecho;
-        } else if (esHijoIzquierdo) {
-            padre.HijoIzquierdo = actual.HijoDerecho;
-        } else {
-            padre.HijoDerecho = actual.HijoDerecho;
+
+    public boolean modificarDatosVehiculo(String placa) {
+        NodoArbol nodo = BuscarVehiculo(placa);
+        if (nodo == null) {
+            return false;
         }
-    }
-    // Caso 2: El nodo tiene un solo hijo (izquierdo)
-    else if (actual.HijoDerecho == null) {
-        if (actual == raiz) {
-            raiz = actual.HijoIzquierdo;
-        } else if (esHijoIzquierdo) {
-            padre.HijoIzquierdo = actual.HijoIzquierdo;
-        } else {
-            padre.HijoDerecho = actual.HijoIzquierdo;
-        }
-    }
-    // Caso 3: El nodo tiene dos hijos
-    else {
-        NodoArbol reemplazo = obtenerReemplazo(actual);
-        if (actual == raiz) {
-            raiz = reemplazo;
-        } else if (esHijoIzquierdo) {
-            padre.HijoIzquierdo = reemplazo;
-        } else {
-            padre.HijoDerecho = reemplazo;
-        }
-        reemplazo.HijoIzquierdo = actual.HijoIzquierdo;
-    }
 
-    return eliminado;
-}
+        Vehiculos v = nodo.vehiculo;
 
-private NodoArbol obtenerReemplazo(NodoArbol nodoReemplazar) {
-    NodoArbol reemplazoPadre = nodoReemplazar;
-    NodoArbol reemplazo = nodoReemplazar;
-    NodoArbol actual = nodoReemplazar.HijoDerecho;
+        // Mostrar diálogos para editar 
+        String nuevoNombre = JOptionPane.showInputDialog("Nuevo propietario:", v.getNombrePropietario());
+        String nuevoDPI = JOptionPane.showInputDialog("Nuevo DPI Propietario:", v.getDpi());
+        String nuevaMarca = JOptionPane.showInputDialog("Nueva marca:", v.getMarca());
+        String nuevoModelo = JOptionPane.showInputDialog("Nuevo modelo:", v.getModelo());
+        int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Nuevo año:", v.getAnio()));
+        int nuevasMultas = Integer.parseInt(JOptionPane.showInputDialog("Nuevas multas:", v.getCantidadMultas()));
+        int nuevosTraspasos = Integer.parseInt(JOptionPane.showInputDialog("Nuevos traspasos:", v.getCantidadTraspasos()));
 
-    while (actual != null) {
-        reemplazoPadre = reemplazo;
-        reemplazo = actual;
-        actual = actual.HijoIzquierdo;
+        // Actualizar objeto
+        v.setNombrePropietario(nuevoNombre);
+        v.setDpi(nuevoDPI);
+        v.setMarca(nuevaMarca);
+        v.setModelo(nuevoModelo);
+        v.setAnio(nuevoAnio);
+        v.setCantidadMultas(nuevasMultas);
+        v.setCantidadTraspasos(nuevosTraspasos);
+        return true;
     }
-
-    if (reemplazo != nodoReemplazar.HijoDerecho) {
-        reemplazoPadre.HijoIzquierdo = reemplazo.HijoDerecho;
-        reemplazo.HijoDerecho = nodoReemplazar.HijoDerecho;
-    }
-
-    return reemplazo;
-}
 
 }
