@@ -46,37 +46,68 @@ public class GestorArchivos {
 
         return lista;
     }
-    
-    public void cargarVehiculosDesdeArchivo(ArbolBinario arbolito) {
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Selecciona el archivo de vehículos");
-    FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
-    fileChooser.setFileFilter(filter);
 
-    int seleccion = fileChooser.showOpenDialog(null);
-    if (seleccion == JFileChooser.APPROVE_OPTION) {
-        File archivoSeleccionado = fileChooser.getSelectedFile();
-        String ruta = archivoSeleccionado.getAbsolutePath();
+    public void cargarVehiculosDesdeArchivoABB(ArbolBinario arbolito) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona el archivo de vehículos");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
+        fileChooser.setFileFilter(filter);
 
-        List<Vehiculos> listaVehiculos = leerVehiculos(ruta);
-        int cargados = 0;
-        int duplicados = 0;
+        int seleccion = fileChooser.showOpenDialog(null);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            String ruta = archivoSeleccionado.getAbsolutePath();
 
-        for (Vehiculos v : listaVehiculos) {
-            if (arbolito.BuscarVehiculo(v.getPlaca()) == null) {
-                arbolito.AgregarVehiculo(v);
-                cargados++;
-            } else {
-                duplicados++;
+            List<Vehiculos> listaVehiculos = leerVehiculos(ruta);
+            int cargados = 0;
+            int duplicados = 0;
+
+            for (Vehiculos v : listaVehiculos) {
+                if (arbolito.BuscarVehiculo(v.getPlaca()) == null) {
+                    arbolito.AgregarVehiculo(v);
+                    cargados++;
+                } else {
+                    duplicados++;
+                }
             }
-        }
 
-        JOptionPane.showMessageDialog(null,
-            "Vehículos cargados: " + cargados + "\nPlacas duplicadas ignoradas: " + duplicados,
-            "Resultado de carga", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(null, "No se seleccionó ningún archivo.");
+            JOptionPane.showMessageDialog(null,
+                    "Vehículos cargados: " + cargados + "\nPlacas duplicadas ignoradas: " + duplicados,
+                    "Resultado de carga", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionó ningún archivo.");
+        }
     }
-}
+
+    public void cargarVehiculosDesdeArchivoAVL(ArbolBinarioAVL arbolitoAVL) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona el archivo de vehículos");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
+        fileChooser.setFileFilter(filter);
+
+        int seleccion = fileChooser.showOpenDialog(null);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            String ruta = archivoSeleccionado.getAbsolutePath();
+
+            List<Vehiculos> listaVehiculos = leerVehiculos(ruta);  // Asegúrate de que este método exista
+            int cargados = 0;
+            int duplicados = 0;
+
+            for (Vehiculos v : listaVehiculos) {
+                if (arbolitoAVL.buscar(v.getPlaca()) == null) {
+                    arbolitoAVL.insertar(v);
+                    cargados++;
+                } else {
+                    duplicados++;
+                }
+            }
+            JOptionPane.showMessageDialog(null,
+                    "Vehículos cargados: " + cargados + "\nPlacas duplicadas ignoradas: " + duplicados,
+                    "Resultado de carga", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionó ningún archivo.");
+        }
+    }
 
 }

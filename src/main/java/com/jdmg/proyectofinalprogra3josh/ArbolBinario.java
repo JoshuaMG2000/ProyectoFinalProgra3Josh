@@ -14,7 +14,7 @@ public class ArbolBinario {
         raiz = null;
     }
 
-    //Para comparar duplicados y proteger al ABB de los mismos
+    //Para comparar duplicados y proteger al ABB de los mismos , 
     public boolean insertarVehiculo(Vehiculos v) {
         if (BuscarVehiculo(v.getPlaca()) != null) {
             return false; // Ya existe una placa igual
@@ -191,23 +191,31 @@ public class ArbolBinario {
         Vehiculos v = nodo.vehiculo;
 
         // Mostrar diálogos para editar 
-        String nuevoNombre = JOptionPane.showInputDialog("Nuevo propietario:", v.getNombrePropietario());
-        String nuevoDPI = JOptionPane.showInputDialog("Nuevo DPI Propietario:", v.getDpi());
-        String nuevaMarca = JOptionPane.showInputDialog("Nueva marca:", v.getMarca());
-        String nuevoModelo = JOptionPane.showInputDialog("Nuevo modelo:", v.getModelo());
-        int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Nuevo año:", v.getAnio()));
-        int nuevasMultas = Integer.parseInt(JOptionPane.showInputDialog("Nuevas multas:", v.getCantidadMultas()));
-        int nuevosTraspasos = Integer.parseInt(JOptionPane.showInputDialog("Nuevos traspasos:", v.getCantidadTraspasos()));
+        try {
+            String nuevoNombre = JOptionPane.showInputDialog("Nuevo propietario:", v.getNombrePropietario());
+            String nuevoDPI = JOptionPane.showInputDialog("Nuevo DPI Propietario:", v.getDpi());
+            String nuevaMarca = JOptionPane.showInputDialog("Nueva marca:", v.getMarca());
+            String nuevoModelo = JOptionPane.showInputDialog("Nuevo modelo:", v.getModelo());
+            int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Nuevo año:", v.getAnio()));
+            int nuevasMultas = Integer.parseInt(JOptionPane.showInputDialog("Nuevas multas:", v.getCantidadMultas()));
+            int nuevosTraspasos = Integer.parseInt(JOptionPane.showInputDialog("Nuevos traspasos:", v.getCantidadTraspasos()));
 
-        // Actualizar objeto
-        v.setNombrePropietario(nuevoNombre);
-        v.setDpi(nuevoDPI);
-        v.setMarca(nuevaMarca);
-        v.setModelo(nuevoModelo);
-        v.setAnio(nuevoAnio);
-        v.setCantidadMultas(nuevasMultas);
-        v.setCantidadTraspasos(nuevosTraspasos);
-        return true;
+            // Actualizar objeto
+            v.setNombrePropietario(nuevoNombre);
+            v.setDpi(nuevoDPI);
+            v.setMarca(nuevaMarca);
+            v.setModelo(nuevoModelo);
+            v.setAnio(nuevoAnio);
+            v.setCantidadMultas(nuevasMultas);
+            v.setCantidadTraspasos(nuevosTraspasos);
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error en datos numéricos: " + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
+            return false;
+        }
     }
 
 }
