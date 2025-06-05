@@ -1,5 +1,10 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.awt.Desktop;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -215,6 +220,43 @@ public class ArbolBinario {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
             return false;
+        }
+    }
+
+    public void generarDotABB(NodoArbol nodo, BufferedWriter writer) throws IOException {
+        if (nodo != null) {
+            String etiqueta = nodo.vehiculo.getPlaca();
+            writer.write("\"" + etiqueta + "\" [label=\"" + etiqueta + "\"];\n");
+
+            if (nodo.HijoIzquierdo != null) {
+                writer.write("\"" + etiqueta + "\" -> \"" + nodo.HijoIzquierdo.vehiculo.getPlaca() + "\";\n");
+                generarDotABB(nodo.HijoIzquierdo, writer);
+            }
+
+            if (nodo.HijoDerecho != null) {
+                writer.write("\"" + etiqueta + "\" -> \"" + nodo.HijoDerecho.vehiculo.getPlaca() + "\";\n");
+                generarDotABB(nodo.HijoDerecho, writer);
+            }
+        }
+    }
+
+    public void exportarABBComoImagen(ArbolBinario arbolito) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("arbolABB.dot"));
+            writer.write("digraph G {\n");
+            writer.write("node [shape=ellipse, style=filled, color=lightblue];\n");
+            generarDotABB(arbolito.raiz, writer);
+            writer.write("}\n");
+            writer.close();
+
+            // Ejecutar Graphviz para generar PNG
+            Process p = Runtime.getRuntime().exec("dot -Tpng arbolABB.dot -o arbolABB.png");
+            p.waitFor();
+
+            // Mostrar imagen generada
+            Desktop.getDesktop().open(new File("arbolABB.png"));
+        } catch (IOException | InterruptedException e) {
+            JOptionPane.showMessageDialog(null, "Error al generar el gráfico: " + e.getMessage());
         }
     }
 

@@ -2,6 +2,7 @@ package com.jdmg.proyectofinalprogra3josh;
 
 public class Vehiculos {
 
+    private String departamento;
     private String placa;
     private String dpi;
     private String nombrePropietario;
@@ -14,7 +15,17 @@ public class Vehiculos {
     private ListaDobleMultas listaMultas;
     private ListaCircularTraspasos listaTraspasos;
 
-    public Vehiculos(String placa, String dpi, String nombrePropietario, String marca, String modelo, int anio, int cantidadMultas, int cantidadTraspasos) {
+    public Vehiculos(
+            String departamento,
+            String placa,
+            String dpi,
+            String nombrePropietario,
+            String marca,
+            String modelo,
+            int anio,
+            int cantidadMultas,
+            int cantidadTraspasos) {
+        this.departamento = departamento;
         this.placa = placa;
         this.dpi = dpi;
         this.nombrePropietario = nombrePropietario;
@@ -23,8 +34,14 @@ public class Vehiculos {
         this.anio = anio;
         this.cantidadMultas = cantidadMultas;
         this.cantidadTraspasos = cantidadTraspasos;
-        this.listaMultas = new ListaDobleMultas(); // Instancias vacías por defecto
-        this.listaTraspasos = new ListaCircularTraspasos();
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 
     public ListaDobleMultas getListaMultas() {
@@ -110,14 +127,16 @@ public class Vehiculos {
     //Mostrar Datos Vehiculo
     @Override
     public String toString() {
-        return "VEHICULO \n"
-                + "PLACA : " + placa + "\n"
-                + "DPI: " + dpi + "\n"
-                + "PROPIETARIO: " + nombrePropietario + "\n"
-                + "MARCA : " + marca + "\n"
-                + "MODELO : " + modelo + "\n"
-                + "AÑO : " + anio + "\n"
-                + "MULTAS : " + cantidadMultas + "\n"
-                + "TRASPASOS : " + cantidadTraspasos + "\n";
+        return "Vehículo ["
+                + "Depto: " + departamento + ", "
+                + "Placa: " + placa + ", "
+                + "DPI: " + dpi + ", "
+                + "Propietario: " + nombrePropietario + ", "
+                + "Marca: " + marca + ", "
+                + "Modelo: " + modelo + ", "
+                + "Año: " + anio + ", "
+                + "Multas: " + cantidadMultas + ", "
+                + "Traspasos: " + cantidadTraspasos
+                + "]";
     }
 }
