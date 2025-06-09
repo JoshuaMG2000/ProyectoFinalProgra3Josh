@@ -21,7 +21,7 @@ public class ArbolBinario {
 
     //Para comparar duplicados y proteger al ABB de los mismos , 
     public boolean insertarVehiculo(Vehiculos v) {
-        if (BuscarVehiculo(v.getPlaca()) != null) {
+        if (BuscarVehiculoABB(v.getPlaca()) != null) {
             return false; // Ya existe una placa igual
         }
         AgregarVehiculo(v);
@@ -89,7 +89,7 @@ public class ArbolBinario {
     }
 
     // Búsqueda por placa
-    public NodoArbol BuscarVehiculo(String placa) {
+    public NodoArbol BuscarVehiculoABB(String placa) {
         NodoArbol auxiliar = raiz;
 
         while (auxiliar != null && !auxiliar.vehiculo.getPlaca().equals(placa)) {
@@ -188,7 +188,7 @@ public class ArbolBinario {
     }
 
     public boolean modificarDatosVehiculo(String placa) {
-        NodoArbol nodo = BuscarVehiculo(placa);
+        NodoArbol nodo = BuscarVehiculoABB(placa);
         if (nodo == null) {
             return false;
         }

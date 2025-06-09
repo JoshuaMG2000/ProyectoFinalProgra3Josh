@@ -124,6 +124,20 @@ public class Vehiculos {
         this.cantidadTraspasos = cantidadTraspasos;
     }
 
+    public Vehiculos clonar() {
+    return new Vehiculos(
+        this.departamento,
+        this.placa,
+        this.dpi,
+        this.nombrePropietario,
+        this.marca,
+        this.modelo,
+        this.anio,
+        this.cantidadMultas,
+        this.cantidadTraspasos
+    );
+}
+
     //Mostrar Datos Vehiculo
     @Override
     public String toString() {

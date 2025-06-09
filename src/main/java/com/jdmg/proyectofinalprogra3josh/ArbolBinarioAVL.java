@@ -20,7 +20,7 @@ public class ArbolBinarioAVL {
 
     //Para comparar duplicados y proteger al ABBAVL de los mismos , 
     public boolean insertarVehiculo(Vehiculos v) {
-        if (buscar(v.getPlaca()) != null) {
+        if (BuscarVehiculoAVL(v.getPlaca()) != null) {
             return false; // Ya existe un vehículo con esa placa
         }
         insertar(v); // Inserta con balanceo AVL
@@ -119,7 +119,7 @@ public class ArbolBinarioAVL {
     }
 
     // === BÚSQUEDA POR PLACA ===
-    public NodoArbolAVL buscar(String placa) {
+    public NodoArbolAVL BuscarVehiculoAVL(String placa) {
         return buscarRecursivo(raiz, placa.toUpperCase());
     }
 
@@ -148,7 +148,7 @@ public class ArbolBinarioAVL {
     }
 
     public boolean modificarDatosVehiculo(String placa) {
-        NodoArbolAVL nodo = buscar(placa);
+        NodoArbolAVL nodo = BuscarVehiculoAVL(placa);
         if (nodo == null) {
             return false;
         }

@@ -197,10 +197,10 @@ public class FormularioInsertarVehiculo extends javax.swing.JDialog {
 
             // Verificar placa duplicada en ABB o AVL
             boolean existe = false;
-            if (arbolABB != null && arbolABB.BuscarVehiculo(placa) != null) {
+            if (arbolABB != null && arbolABB.BuscarVehiculoABB(placa) != null) {
                 existe = true;
             }
-            if (arbolAVL != null && arbolAVL.buscar(placa) != null) {
+            if (arbolAVL != null && arbolAVL.BuscarVehiculoAVL(placa) != null) {
                 existe = true;
             }
 
