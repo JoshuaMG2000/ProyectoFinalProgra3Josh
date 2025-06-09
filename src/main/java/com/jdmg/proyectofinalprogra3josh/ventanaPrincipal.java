@@ -149,11 +149,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnPreOrdenAVL = new javax.swing.JButton();
         btnInOrdenAVL = new javax.swing.JButton();
         btnPostOrdenAVL = new javax.swing.JButton();
+        btnModificarABB = new javax.swing.JButton();
+        btnModificarAVL = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cargarDatos = new javax.swing.JMenuItem();
-        modificarVehiculo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,7 +322,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInsertarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 610, 120, 30));
+        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 610, 120, 30));
 
         btnEliminarVehiculoAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnEliminarVehiculoAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -364,7 +365,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnVerArbolABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 150, 30));
+        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 150, 30));
 
         btnPreOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -405,6 +406,32 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnPostOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 610, 110, 30));
 
+        btnModificarABB.setBackground(new java.awt.Color(44, 48, 57));
+        btnModificarABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnModificarABB.setForeground(new java.awt.Color(255, 255, 51));
+        btnModificarABB.setText("MODIFICAR");
+        btnModificarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnModificarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 260, 110, 30));
+
+        btnModificarAVL.setBackground(new java.awt.Color(0, 51, 51));
+        btnModificarAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnModificarAVL.setForeground(new java.awt.Color(204, 204, 255));
+        btnModificarAVL.setText("MODIFICAR");
+        btnModificarAVL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnModificarAVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarAVL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarAVLActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 610, 120, 30));
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1880, 870));
@@ -425,15 +452,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(cargarDatos);
-
-        modificarVehiculo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        modificarVehiculo.setText("MODIFICAR VEHICULO");
-        modificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarVehiculoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(modificarVehiculo);
 
         jMenuBar1.add(jMenu1);
 
@@ -568,7 +586,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 return;
             }
 
-            NodoArbol resultado = arbolito.BuscarVehiculo(placaBuscada);
+            NodoArbol resultado = arbolito.BuscarVehiculoABB(placaBuscada);
 
             if (resultado != null) {
                 JOptionPane.showMessageDialog(this,
@@ -631,7 +649,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             placa = placa.toUpperCase();
 
             // 3. Verificar duplicado
-            if (arbolito.BuscarVehiculo(placa) != null) {
+            if (arbolito.BuscarVehiculoABB(placa) != null) {
                 JOptionPane.showMessageDialog(this,
                         "Ya existe un vehículo con la placa " + placa + ".");
                 return;
@@ -737,7 +755,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             return;
         }
 
-        NodoArbolAVL nodo = arbolitoAVL.buscar(placa);
+        NodoArbolAVL nodo = arbolitoAVL.BuscarVehiculoAVL(placa);
 
         if (nodo != null) {
             JOptionPane.showMessageDialog(this,
@@ -798,59 +816,49 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         llenarTablaPostOrdenAVL(arbolitoAVL.getRaiz(), modelo);
     }//GEN-LAST:event_btnPostOrdenAVLActionPerformed
 
-    private void modificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarVehiculoActionPerformed
-        int fila = tablaVehiculosABB.getSelectedRow();
-        if (fila == -1) {
+    private void btnModificarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarABBActionPerformed
+        int filaSeleccionada = tablaVehiculosABB.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
             JOptionPane.showMessageDialog(this, "Selecciona una fila para modificar.");
             return;
         }
 
-        // Confirmación
-        int opcion = JOptionPane.showConfirmDialog(this,
-                "Se va a modificar el vehículo y se actualizará en ABB y AVL.\n¿Desea continuar?",
-                "Confirmación de modificación",
-                JOptionPane.YES_NO_OPTION);
-        if (opcion != JOptionPane.YES_OPTION) {
+        String placa = tablaVehiculosABB.getValueAt(filaSeleccionada, 1).toString(); // columna 1 = PLACA
+        NodoArbol nodo = arbolito.BuscarVehiculoABB(placa);
+
+        if (nodo != null) {
+            Vehiculos vehiculo = nodo.vehiculo;
+            FormularioModificarVehiculo dialog = new FormularioModificarVehiculo(this, true, vehiculo, tablaVehiculosABB, filaSeleccionada);
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el vehículo.");
+        }
+    }//GEN-LAST:event_btnModificarABBActionPerformed
+
+    private void btnModificarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAVLActionPerformed
+        int filaSeleccionada = tablaVehiculosAVL.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fila para modificar.");
             return;
         }
 
-        // Obtener placa desde la tabla ABB (columna 1)
-        String placa = tablaVehiculosABB.getValueAt(fila, 1).toString();
-        NodoArbol nodoABB = arbolito.BuscarVehiculo(placa);
-        if (nodoABB == null) {
-            JOptionPane.showMessageDialog(this, "Vehículo no encontrado");
-            return;
+        String placa = tablaVehiculosAVL.getValueAt(filaSeleccionada, 1).toString(); // columna 1 = PLACA
+        NodoArbolAVL nodo = arbolitoAVL.BuscarVehiculoAVL(placa);
+
+        if (nodo != null) {
+            Vehiculos vehiculo = nodo.vehiculo;
+            FormularioModificarVehiculo dialog = new FormularioModificarVehiculo(this, true, vehiculo, tablaVehiculosAVL, filaSeleccionada);
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el vehículo.");
         }
 
-        // Mostrar formulario
-        FormularioModificarVehiculo form = new FormularioModificarVehiculo(this, true, nodoABB.vehiculo, tablaVehiculosABB, fila);
-        form.setLocationRelativeTo(this);
-        form.setVisible(true);
 
-        // 🔄 Luego de cerrar el formulario, actualizar también la tabla AVL
-        NodoArbolAVL nodoAVL = arbolitoAVL.buscar(placa);
-        if (nodoAVL != null) {
-            Vehiculos v = nodoAVL.vehiculo;
-
-            // Buscar fila en tabla AVL que coincida con la placa
-            for (int i = 0; i < tablaVehiculosAVL.getRowCount(); i++) {
-                String placaAVL = tablaVehiculosAVL.getValueAt(i, 1).toString();
-                if (placaAVL.equalsIgnoreCase(placa)) {
-                    DefaultTableModel modeloAVL = (DefaultTableModel) tablaVehiculosAVL.getModel();
-                    modeloAVL.setValueAt(v.getDepartamento(), i, 0);
-                    modeloAVL.setValueAt(v.getPlaca(), i, 1);
-                    modeloAVL.setValueAt(v.getDpi(), i, 2);
-                    modeloAVL.setValueAt(v.getNombrePropietario(), i, 3);
-                    modeloAVL.setValueAt(v.getMarca(), i, 4);
-                    modeloAVL.setValueAt(v.getModelo(), i, 5);
-                    modeloAVL.setValueAt(v.getAnio(), i, 6);
-                    modeloAVL.setValueAt(v.getCantidadMultas(), i, 7);
-                    modeloAVL.setValueAt(v.getCantidadTraspasos(), i, 8);
-                    break;
-                }
-            }
-        }
-    }//GEN-LAST:event_modificarVehiculoActionPerformed
+    }//GEN-LAST:event_btnModificarAVLActionPerformed
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
             llenarTablaInOrdenAVL(nodo.izquierdo, modelo);
@@ -934,6 +942,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnInOrdenAVL;
     private javax.swing.JButton btnInsertarABB;
     private javax.swing.JButton btnInsertarAVL;
+    private javax.swing.JButton btnModificarABB;
+    private javax.swing.JButton btnModificarAVL;
     private javax.swing.JButton btnPostOrdenABB;
     private javax.swing.JButton btnPostOrdenAVL;
     private javax.swing.JButton btnPreOrdenABB;
@@ -953,7 +963,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jtextFieldPlaca;
     private javax.swing.JTextField jtextFieldPlacaAVL;
-    private javax.swing.JMenuItem modificarVehiculo;
     private javax.swing.JTable tablaVehiculosABB;
     private javax.swing.JTable tablaVehiculosAVL;
     // End of variables declaration//GEN-END:variables
