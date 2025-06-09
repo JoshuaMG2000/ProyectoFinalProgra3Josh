@@ -6,16 +6,16 @@ package com.jdmg.proyectofinalprogra3josh;
  */
 public class NodoDobleMulta {
 
-    public Vehiculos vehiculo;
+    public Multa multa;
     public NodoDobleMulta siguiente, anterior;
 
-    public NodoDobleMulta(Vehiculos v) {
-        this(v, null, null);
+    public NodoDobleMulta(Multa multa) {
+        this(multa, null, null);
     }
 
-    public NodoDobleMulta(Vehiculos v, NodoDobleMulta s, NodoDobleMulta a) {
-        vehiculo = v;
-        siguiente = s;
-        anterior = a;
+    public NodoDobleMulta(Multa multa, NodoDobleMulta sig, NodoDobleMulta ant) {
+        this.multa = multa;
+        this.siguiente = sig;
+        this.anterior = ant;
     }
 }

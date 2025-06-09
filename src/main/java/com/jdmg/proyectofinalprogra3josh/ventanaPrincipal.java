@@ -138,8 +138,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnInsertarABB = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaVehiculosAVL = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnInsertarAVL = new javax.swing.JButton();
         btnEliminarVehiculoAVL = new javax.swing.JButton();
@@ -152,18 +150,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnModificarABB = new javax.swing.JButton();
         btnModificarAVL = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cargarDatos = new javax.swing.JMenuItem();
+        VerMultas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,7 +186,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             tablaVehiculosABB.getColumnModel().getColumn(8).setPreferredWidth(70);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1430, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 1430, 240));
 
         btnInOrdenABB.setBackground(new java.awt.Color(44, 48, 57));
         btnInOrdenABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -207,7 +199,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInOrdenABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 110, 30));
+        jPanel1.add(btnInOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 110, 30));
 
         btnPreOrdenABB.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -220,7 +212,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnPreOrdenABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPreOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 110, 30));
+        jPanel1.add(btnPreOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 110, 30));
 
         btnPostOrdenABB.setBackground(new java.awt.Color(44, 48, 57));
         btnPostOrdenABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -233,7 +225,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnPostOrdenABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPostOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 110, 30));
+        jPanel1.add(btnPostOrdenABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 110, 30));
 
         btnbuscarABB.setBackground(new java.awt.Color(44, 48, 57));
         btnbuscarABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -246,11 +238,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnbuscarABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnbuscarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 150, 30));
+        jPanel1.add(btnbuscarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 70, 150, 30));
 
         jtextFieldPlaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jtextFieldPlaca.setText("Ingrese No. Placa");
-        jPanel1.add(jtextFieldPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 20, 180, 30));
+        jPanel1.add(jtextFieldPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 70, 180, 30));
 
         btnEliminarVehiculoABB.setBackground(new java.awt.Color(44, 48, 57));
         btnEliminarVehiculoABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -263,7 +255,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnEliminarVehiculoABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarVehiculoABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 290, 110, 30));
+        jPanel1.add(btnEliminarVehiculoABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 340, 110, 30));
 
         btnInsertarABB.setBackground(new java.awt.Color(44, 48, 57));
         btnInsertarABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -276,7 +268,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInsertarABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 290, 110, 30));
+        jPanel1.add(btnInsertarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 340, 110, 30));
 
         tablaVehiculosAVL.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -301,25 +293,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             tablaVehiculosAVL.getColumnModel().getColumn(8).setPreferredWidth(70);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 1430, 240));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 1430, 240));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("S.I.R.V.E. v4.0");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, -1, -1));
-
-        jLabel4.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("H");
-        jLabel4.setToolTipText("");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 110, 40, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("DATOS EN (AVL)");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 490, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 490, -1));
 
         btnInsertarAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnInsertarAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -332,7 +311,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInsertarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 630, 120, 30));
+        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 680, 120, 30));
 
         btnEliminarVehiculoAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnEliminarVehiculoAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -345,7 +324,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnEliminarVehiculoAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarVehiculoAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 630, 110, 30));
+        jPanel1.add(btnEliminarVehiculoAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 680, 110, 30));
 
         btnbuscarAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnbuscarAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -358,11 +337,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnbuscarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnbuscarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 360, 150, 30));
+        jPanel1.add(btnbuscarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 410, 150, 30));
 
         jtextFieldPlacaAVL.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jtextFieldPlacaAVL.setText("Ingrese No. Placa");
-        jPanel1.add(jtextFieldPlacaAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 360, 170, 30));
+        jPanel1.add(jtextFieldPlacaAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 410, 170, 30));
 
         btnVerArbolABB.setBackground(new java.awt.Color(44, 48, 57));
         btnVerArbolABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -375,7 +354,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnVerArbolABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 100, 30));
+        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 100, 30));
 
         btnPreOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -388,7 +367,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnPreOrdenAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPreOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 110, 30));
+        jPanel1.add(btnPreOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 680, 110, 30));
 
         btnInOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnInOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -401,7 +380,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInOrdenAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 630, 110, 30));
+        jPanel1.add(btnInOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 680, 110, 30));
 
         btnPostOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPostOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -414,7 +393,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnPostOrdenAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPostOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 630, 110, 30));
+        jPanel1.add(btnPostOrdenAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, 110, 30));
 
         btnModificarABB.setBackground(new java.awt.Color(44, 48, 57));
         btnModificarABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -427,7 +406,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnModificarABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 290, 110, 30));
+        jPanel1.add(btnModificarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 340, 110, 30));
 
         btnModificarAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnModificarAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -440,82 +419,26 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnModificarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 630, 120, 30));
+        jPanel1.add(btnModificarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 680, 120, 30));
 
         jLabel6.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 204));
         jLabel6.setText("DATOS EN (ABB)");
         jLabel6.setToolTipText("");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 490, -1));
-
-        jLabel7.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("S");
-        jLabel7.setToolTipText("");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 410, 40, -1));
-
-        jLabel8.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("V");
-        jLabel8.setToolTipText("");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 10, 40, -1));
-
-        jLabel9.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("E");
-        jLabel9.setToolTipText("");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 60, 40, -1));
-
-        jLabel10.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("I");
-        jLabel10.setToolTipText("");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 160, 40, -1));
-
-        jLabel11.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("C");
-        jLabel11.setToolTipText("");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 210, 40, -1));
-
-        jLabel12.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("U");
-        jLabel12.setToolTipText("");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 260, 40, -1));
-
-        jLabel13.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("L");
-        jLabel13.setToolTipText("");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 310, 40, -1));
-
-        jLabel14.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("O");
-        jLabel14.setToolTipText("");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 360, 40, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 490, -1));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1880, 870));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1880, 800));
+
+        jLabel8.setBackground(new java.awt.Color(153, 204, 0));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("VEHICULOS REGISTRADOS POR DEPARTAMENTO");
+        jLabel8.setToolTipText("");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1340, 50));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -534,6 +457,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(cargarDatos);
 
+        VerMultas.setText("VER MULTAS");
+        VerMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerMultasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(VerMultas);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -542,10 +473,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     ArbolBinario arbolito = new ArbolBinario();
     ArbolBinarioAVL arbolitoAVL = new ArbolBinarioAVL();
+    ListaDobleMultas listaMultas = new ListaDobleMultas();
     GestorArchivos gestor = new GestorArchivos();
     Cronometro cronometro = new Cronometro();
 
-    private void llenarTablaDesdeABB(NodoArbol nodo, DefaultTableModel modelo) {
+    public void llenarTablaDesdeABB(NodoArbol nodo, DefaultTableModel modelo) {
         if (nodo != null) {
             llenarTablaDesdeABB(nodo.HijoIzquierdo, modelo); // InOrden (ordenado)
 
@@ -573,7 +505,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }
 
-    private void llenarTablaDesdeAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
+    public void llenarTablaDesdeAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
             llenarTablaDesdeAVL(nodo.izquierdo, modelo);
 
@@ -594,7 +526,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             llenarTablaDesdeAVL(nodo.derecho, modelo);
         }
     }
-
 
     private void btnPreOrdenABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreOrdenABBActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
@@ -738,81 +669,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         dialogo.setLocationRelativeTo(this); // centrar
         dialogo.setVisible(true);            // mostrar formulario
 
-        /*try {
-            // 1. Solicitar departamento
-            String departamento = JOptionPane.showInputDialog("Ingrese el departamento:");
-            if (departamento == null || departamento.trim().isEmpty()) {
-                return;
-            }
-            departamento = departamento.trim();
-
-            // 2. Solicitar placa
-            String placa = JOptionPane.showInputDialog("Ingrese la placa:");
-            if (placa == null || placa.trim().isEmpty()) {
-                return;
-            }
-            placa = placa.toUpperCase();
-
-            // 3. Verificar duplicado
-            if (arbolito.BuscarVehiculoABB(placa) != null) {
-                JOptionPane.showMessageDialog(this,
-                        "Ya existe un vehículo con la placa " + placa + ".");
-                return;
-            }
-
-            // 4. Resto de datos
-            String dpi = JOptionPane.showInputDialog("Ingrese el DPI del propietario:");
-            String nombre = JOptionPane.showInputDialog("Ingrese el Nombre del propietario:");
-            String marca = JOptionPane.showInputDialog("Ingrese la marca:");
-            String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");
-            int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año:"));
-            int multas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de multas:"));
-            int traspasos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de traspasos:"));
-
-            // 5. Crear objeto y medir tiempo
-            cronometro.iniciar();
-            Vehiculos nuevo = new Vehiculos(
-                    departamento,
-                    placa,
-                    dpi,
-                    nombre,
-                    marca,
-                    modelo,
-                    anio,
-                    multas,
-                    traspasos
-            );
-
-            // 6. Insertar en ABB
-            if (arbolito.insertarVehiculo(nuevo)) {
-                // 7. Agregar fila incluyendo Departamento al inicio
-                DefaultTableModel modeloTabla = (DefaultTableModel) tablaVehiculosABB.getModel();
-                Object[] fila = {
-                    nuevo.getDepartamento(),
-                    nuevo.getPlaca(),
-                    nuevo.getDpi(),
-                    nuevo.getNombrePropietario(),
-                    nuevo.getMarca(),
-                    nuevo.getModelo(),
-                    nuevo.getAnio(),
-                    nuevo.getCantidadMultas(),
-                    nuevo.getCantidadTraspasos()
-                };
-                modeloTabla.addRow(fila);
-
-                JOptionPane.showMessageDialog(this,
-                        "Vehículo insertado con éxito.\n" + cronometro.detenerComoTexto());
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "No se pudo insertar el vehículo (duplicado).\n" + cronometro.detenerComoTexto());
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error en datos numéricos: " + e.getMessage());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Ocurrió un error inesperado: " + ex.getMessage());
-        }*/
     }//GEN-LAST:event_btnInsertarABBActionPerformed
 
 
@@ -889,7 +745,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             String ruta = carpetaSeleccionada.getAbsolutePath();
 
             // Llama al gestor para cargar todo
-            gestor.cargarTodoDesdeCarpeta(ruta, arbolito, arbolitoAVL);
+            gestor.cargarTodoDesdeCarpeta(ruta, arbolito, arbolitoAVL, listaMultas);
 
             // Refrescar tabla ABB
             DefaultTableModel modeloABB = (DefaultTableModel) tablaVehiculosABB.getModel();
@@ -900,8 +756,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             DefaultTableModel modeloAVL = (DefaultTableModel) tablaVehiculosAVL.getModel();
             modeloAVL.setRowCount(0);
             llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modeloAVL);
+
         }
     }//GEN-LAST:event_cargarDatosActionPerformed
+
 
     private void btnPreOrdenAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreOrdenAVLActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
@@ -964,6 +822,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnModificarAVLActionPerformed
+
+    private void VerMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerMultasActionPerformed
+        ventanaMultas vm = new ventanaMultas(this, arbolito, arbolitoAVL, tablaVehiculosABB, tablaVehiculosAVL);
+        vm.llenarMultas(listaMultas); // Aquí se pasa la lista cargada
+        vm.setLocationRelativeTo(this);
+        vm.setVisible(true);
+        this.setVisible(false); // Oculta ventana principal temporalmente
+    }//GEN-LAST:event_VerMultasActionPerformed
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
             llenarTablaInOrdenAVL(nodo.izquierdo, modelo);
@@ -1041,6 +907,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem VerMultas;
     private javax.swing.JButton btnEliminarVehiculoABB;
     private javax.swing.JButton btnEliminarVehiculoAVL;
     private javax.swing.JButton btnInOrdenABB;
@@ -1058,18 +925,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnbuscarAVL;
     private javax.swing.JMenuItem cargarDatos;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

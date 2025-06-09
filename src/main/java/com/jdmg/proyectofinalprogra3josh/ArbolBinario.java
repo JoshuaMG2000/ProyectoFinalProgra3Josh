@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -258,6 +259,14 @@ public class ArbolBinario {
         } catch (IOException | InterruptedException e) {
             JOptionPane.showMessageDialog(null, "Error al generar el gráfico: " + e.getMessage());
         }
+    }
+
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NodoArbol raiz) {
+        this.raiz = raiz;
     }
 
 }
