@@ -1,5 +1,6 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +15,7 @@ public class ventanaMultas extends javax.swing.JFrame {
     private ArbolBinarioAVL arbolAVL;
     private JTable tablaABB;
     private JTable tablaAVL;
+    ListaDobleMultas listaMultas = new ListaDobleMultas();
 
     public ventanaMultas(ventanaPrincipal principal, ArbolBinario arbolABB, ArbolBinarioAVL arbolAVL, JTable tablaABB, JTable tablaAVL) {
         initComponents();
@@ -229,52 +231,46 @@ public class ventanaMultas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnInsertarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarMultaActionPerformed
-        // TODO add your handling code here:
+        FormularioInsertarMulta formMulta = new FormularioInsertarMulta(
+                this, true, listaMultas, tablaMultas, arbolABB, arbolAVL);
+        formMulta.setLocationRelativeTo(this);
+        formMulta.setVisible(true);
     }//GEN-LAST:event_btnInsertarMultaActionPerformed
 
     private void btnModificarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMultaActionPerformed
-        // TODO add your handling code here:
+        int fila = tablaMultas.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fila para modificar.");
+            return;
+        }
+
+        // Obtener placa y fecha de la fila (o usa una combinación única si la tienes)
+        String placa = tablaMultas.getValueAt(fila, 1).toString();
+        String fecha = tablaMultas.getValueAt(fila, 2).toString();
+
+        // Buscar la multa correspondiente en la lista doble
+        NodoDobleMulta actual = listaMultas.getInicio(); // asegúrate de tener el getter
+        while (actual != null) {
+            Multa m = actual.multa;
+            if (m.getPlaca().equalsIgnoreCase(placa) && m.getFecha().equals(fecha)) {
+                // Abrir el formulario de modificación
+                FormularioModificarMulta form = new FormularioModificarMulta(this, true, m, tablaMultas, fila);
+                form.setLocationRelativeTo(this);
+                form.setVisible(true);
+                return; // Ya se encontró y mostró el formulario
+            }
+            actual = actual.siguiente;
+        }
+
+        // Si no encontró la multa
+        JOptionPane.showMessageDialog(this, "No se encontró la multa en la lista.");
     }//GEN-LAST:event_btnModificarMultaActionPerformed
 
     private void btnEliminarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarMultaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaMultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaMultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaMultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaMultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaMultas().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarMulta;
