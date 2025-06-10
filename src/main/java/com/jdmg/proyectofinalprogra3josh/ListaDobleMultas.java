@@ -122,4 +122,14 @@ public class ListaDobleMultas {
     public NodoDobleMulta getInicio() {
         return inicio;
     }
+
+    public NodoDobleMulta getNodoEnPosicion(int posicion) {
+        NodoDobleMulta actual = inicio;
+        int contador = 0;
+        while (actual != null && contador < posicion) {
+            actual = actual.siguiente;
+            contador++;
+        }
+        return actual;
+    }
 }

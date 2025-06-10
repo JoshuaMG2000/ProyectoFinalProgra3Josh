@@ -337,7 +337,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnbuscarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnbuscarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 410, 150, 30));
+        jPanel1.add(btnbuscarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 410, 160, 30));
 
         jtextFieldPlacaAVL.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jtextFieldPlacaAVL.setText("Ingrese No. Placa");
@@ -430,7 +430,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1880, 800));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1880, 800));
 
         jLabel8.setBackground(new java.awt.Color(153, 204, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -646,8 +646,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             return;
         }
 
-        String placa = tablaVehiculosABB.getValueAt(filaSeleccionada, 1).toString();
+        String placa = tablaVehiculosABB.getValueAt(filaSeleccionada, 1).toString(); // Columna 1 = Placa
         cronometro.iniciar();
+
         Vehiculos eliminado = arbolito.EliminarVehiculo(placa);
 
         if (eliminado != null) {
@@ -655,9 +656,25 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
             modelo.removeRow(filaSeleccionada);
 
-            JOptionPane.showMessageDialog(this, "Vehículo eliminado:\n" + eliminado.toString() + "\n" + cronometro.detenerComoTexto());
+            // Mostrar datos del vehículo eliminado con formato bonito
+            StringBuilder info = new StringBuilder("🗑 VEHÍCULO ELIMINADO (ABB)\n\n");
+            info.append("🗂 Departamento: ").append(eliminado.getDepartamento()).append("\n");
+            info.append("🚗 Placa: ").append(eliminado.getPlaca()).append("\n");
+            info.append("🆔 DPI: ").append(eliminado.getDpi()).append("\n");
+            info.append("👤 Propietario: ").append(eliminado.getNombrePropietario()).append("\n");
+            info.append("🔧 Marca: ").append(eliminado.getMarca()).append("\n");
+            info.append("📦 Modelo: ").append(eliminado.getModelo()).append("\n");
+            info.append("📅 Año: ").append(eliminado.getAnio()).append("\n");
+            info.append("🚓 Multas: ").append(eliminado.getCantidadMultas()).append("\n");
+            info.append("🔁 Traspasos: ").append(eliminado.getCantidadTraspasos()).append("\n");
+            info.append("\n⏱ ").append(cronometro.detenerComoTexto());
+
+            JOptionPane.showMessageDialog(this, info.toString(), "Vehículo Eliminado", JOptionPane.INFORMATION_MESSAGE);
+
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontró el vehículo en el ABB. \n" + cronometro.detenerComoTexto());
+            JOptionPane.showMessageDialog(this,
+                    "🚫 No se encontró el vehículo en el ABB.\n" + cronometro.detenerComoTexto(),
+                    "No encontrado", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarVehiculoABBActionPerformed
 
@@ -689,43 +706,84 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             return;
         }
 
-        String placa = tablaVehiculosAVL.getValueAt(filaSeleccionada, 1).toString();
+        String placa = tablaVehiculosAVL.getValueAt(filaSeleccionada, 1).toString(); // Columna 1 = Placa
         cronometro.iniciar();
 
         Vehiculos eliminado = arbolitoAVL.eliminarVehiculo(placa);
 
         if (eliminado != null) {
+            // Eliminar de la tabla
             DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
             modelo.removeRow(filaSeleccionada);
 
-            JOptionPane.showMessageDialog(this,
-                    "Vehículo eliminado:\n" + eliminado.toString() + "\n" + cronometro.detenerComoTexto(),
-                    "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            // Mostrar datos bonitos
+            StringBuilder info = new StringBuilder("🗑 VEHÍCULO ELIMINADO (AVL)\n\n");
+            info.append("🗂 Departamento: ").append(eliminado.getDepartamento()).append("\n");
+            info.append("🚗 Placa: ").append(eliminado.getPlaca()).append("\n");
+            info.append("🆔 DPI: ").append(eliminado.getDpi()).append("\n");
+            info.append("👤 Propietario: ").append(eliminado.getNombrePropietario()).append("\n");
+            info.append("🔧 Marca: ").append(eliminado.getMarca()).append("\n");
+            info.append("📦 Modelo: ").append(eliminado.getModelo()).append("\n");
+            info.append("📅 Año: ").append(eliminado.getAnio()).append("\n");
+            info.append("🚓 Multas: ").append(eliminado.getCantidadMultas()).append("\n");
+            info.append("🔁 Traspasos: ").append(eliminado.getCantidadTraspasos()).append("\n");
+            info.append("\n⏱ ").append(cronometro.detenerComoTexto());
+
+            JOptionPane.showMessageDialog(this, info.toString(), "Vehículo Eliminado", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "No se encontró el vehículo en el árbol AVL.\n" + cronometro.detenerComoTexto(),
-                    "No encontrado", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "🚫 No se encontró el vehículo en el árbol AVL.\n" + cronometro.detenerComoTexto(), "No encontrado", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarVehiculoAVLActionPerformed
 
     private void btnbuscarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarAVLActionPerformed
-        String placa = jtextFieldPlacaAVL.getText().trim().toUpperCase();
+        cronometro.iniciar(); // Inicia el cronómetro
 
-        if (placa.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingresa una placa a buscar.");
-            return;
-        }
+        if (!arbolitoAVL.EstaVacio()) {
+            String placaBuscada = jtextFieldPlacaAVL.getText().trim().toUpperCase();
 
-        NodoArbolAVL nodo = arbolitoAVL.BuscarVehiculoAVL(placa);
+            if (placaBuscada.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor ingresa una placa para buscar.");
+                return;
+            }
 
-        if (nodo != null) {
-            JOptionPane.showMessageDialog(this,
-                    "Vehículo encontrado:\n\n" + nodo.vehiculo.toString(),
-                    "Resultado AVL", JOptionPane.INFORMATION_MESSAGE);
+            NodoArbolAVL resultado = arbolitoAVL.BuscarVehiculoAVL(placaBuscada);
+
+            if (resultado != null) {
+                Vehiculos v = resultado.vehiculo;
+
+                // Mostrar los datos del vehículo con formato similar al ABB
+                StringBuilder info = new StringBuilder("✅ VEHÍCULO ENCONTRADO (AVL)\n\n");
+                info.append("🗂 Departamento: ").append(v.getDepartamento()).append("\n");
+                info.append("🚗 Placa: ").append(v.getPlaca()).append("\n");
+                info.append("🆔 DPI: ").append(v.getDpi()).append("\n");
+                info.append("👤 Propietario: ").append(v.getNombrePropietario()).append("\n");
+                info.append("🔧 Marca: ").append(v.getMarca()).append("\n");
+                info.append("📦 Modelo: ").append(v.getModelo()).append("\n");
+                info.append("📅 Año: ").append(v.getAnio()).append("\n");
+                info.append("🚓 Multas: ").append(v.getCantidadMultas()).append("\n");
+                info.append("🔁 Traspasos: ").append(v.getCantidadTraspasos()).append("\n");
+                info.append("\n⏱ ").append(cronometro.detenerComoTexto());
+
+                JOptionPane.showMessageDialog(this, info.toString(), "Resultado de búsqueda", JOptionPane.INFORMATION_MESSAGE);
+
+                // Resaltar la fila correspondiente en la tabla (si la usas)
+                DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    String placaFila = modelo.getValueAt(i, 1).toString(); // Suponiendo que la columna 1 es la placa
+                    if (placaFila.equalsIgnoreCase(placaBuscada)) {
+                        tablaVehiculosAVL.setRowSelectionInterval(i, i); // Seleccionar fila
+                        tablaVehiculosAVL.scrollRectToVisible(tablaVehiculosAVL.getCellRect(i, 0, true)); // Hacer visible
+                        break;
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "🚫 Vehículo no encontrado con placa: " + placaBuscada + "\n" + cronometro.detenerComoTexto(),
+                        "No encontrado", JOptionPane.WARNING_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "Vehículo con placa '" + placa + "' no fue encontrado en el árbol AVL.",
-                    "No encontrado", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El árbol AVL está vacío.\n" + cronometro.detenerComoTexto());
         }
     }//GEN-LAST:event_btnbuscarAVLActionPerformed
 
@@ -867,42 +925,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             v.getCantidadTraspasos()
         };
         modelo.addRow(fila);
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaPrincipal().setVisible(true);
-            }
-        });
-
     }
 
 

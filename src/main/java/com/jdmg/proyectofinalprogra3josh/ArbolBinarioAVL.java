@@ -263,4 +263,7 @@ public class ArbolBinarioAVL {
         return nodo;
     }
 
+    public boolean EstaVacio() {
+        return raiz == null;
+    }
 }

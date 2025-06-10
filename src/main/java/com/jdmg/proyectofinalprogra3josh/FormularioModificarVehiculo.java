@@ -8,6 +8,7 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
     private Vehiculos vehiculo;
     private JTable tabla;
     private int filaSeleccionada;
+    Cronometro cronometro = new Cronometro();
 
     public FormularioModificarVehiculo(java.awt.Frame parent, boolean modal, Vehiculos vehiculo, JTable tabla, int filaSeleccionada) {
         super(parent, modal);
@@ -180,6 +181,7 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
+            cronometro.iniciar();
             vehiculo.setDepartamento(txtDepartamento.getText().trim());
             vehiculo.setDpi(txtDpi.getText().trim());
             vehiculo.setNombrePropietario(txtNombre.getText().trim());
@@ -188,7 +190,7 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
             vehiculo.setAnio(Integer.parseInt(txtAnio.getText().trim()));
             vehiculo.setCantidadMultas(Integer.parseInt(txtMultas.getText().trim()));
             vehiculo.setCantidadTraspasos(Integer.parseInt(txtTraspasos.getText().trim()));
-
+            
             // Actualizar JTable
             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
             modelo.setValueAt(vehiculo.getDepartamento(), filaSeleccionada, 0);
@@ -201,7 +203,7 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
             modelo.setValueAt(vehiculo.getCantidadMultas(), filaSeleccionada, 7);
             modelo.setValueAt(vehiculo.getCantidadTraspasos(), filaSeleccionada, 8);
 
-            JOptionPane.showMessageDialog(this, "Vehículo modificado correctamente.");
+            JOptionPane.showMessageDialog(this, "Vehículo modificado correctamente.\n\n"+cronometro.detenerComoTexto());
             dispose();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error en campos numéricos: " + e.getMessage());
