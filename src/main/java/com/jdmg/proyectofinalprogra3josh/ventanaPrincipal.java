@@ -11,6 +11,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class ventanaPrincipal extends javax.swing.JFrame {
 
+    private ListaDobleMultas listaMultas;
+    private ventanaMultas ventanaMultas;
+
     public ventanaPrincipal() {
         initComponents();
         // ====== ESTILO PROFESIONAL PARA JTable ======
@@ -119,7 +122,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         };
 
         tablaVehiculosAVL.setModel(modeloNoEditableAVL);
-
+        listaMultas = new ListaDobleMultas();
     }
 
     @SuppressWarnings("unchecked")
@@ -457,7 +460,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(cargarDatos);
 
+        VerMultas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         VerMultas.setText("VER MULTAS");
+        VerMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         VerMultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerMultasActionPerformed(evt);
@@ -473,7 +478,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     ArbolBinario arbolito = new ArbolBinario();
     ArbolBinarioAVL arbolitoAVL = new ArbolBinarioAVL();
-    ListaDobleMultas listaMultas = new ListaDobleMultas();
     GestorArchivos gestor = new GestorArchivos();
     Cronometro cronometro = new Cronometro();
 
@@ -815,6 +819,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             modeloAVL.setRowCount(0);
             llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modeloAVL);
 
+            ventanaMultas = new ventanaMultas(this, arbolito, arbolitoAVL, tablaVehiculosABB, tablaVehiculosAVL, listaMultas);
+            ventanaMultas.llenarMultas(listaMultas);
+
         }
     }//GEN-LAST:event_cargarDatosActionPerformed
 
@@ -881,12 +888,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnModificarAVLActionPerformed
 
+
     private void VerMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerMultasActionPerformed
-        ventanaMultas vm = new ventanaMultas(this, arbolito, arbolitoAVL, tablaVehiculosABB, tablaVehiculosAVL);
-        vm.llenarMultas(listaMultas); // Aquí se pasa la lista cargada
-        vm.setLocationRelativeTo(this);
-        vm.setVisible(true);
-        this.setVisible(false); // Oculta ventana principal temporalmente
+        if (ventanaMultas != null) {
+            //ventanaMultas.llenarMultas(listaMultas); // Refrescar datos antes de mostrar
+            ventanaMultas.setLocationRelativeTo(this);
+            ventanaMultas.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero debes cargar los datos desde una carpeta.");
+        }
     }//GEN-LAST:event_VerMultasActionPerformed
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {

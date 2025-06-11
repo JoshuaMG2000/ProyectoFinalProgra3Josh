@@ -1,11 +1,12 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jgald
  */
-import javax.swing.JOptionPane;
-
+//import javax.swing.JOptionPane;
 public class ListaDobleMultas {
 
     private NodoDobleMulta inicio, fin;
@@ -27,6 +28,79 @@ public class ListaDobleMultas {
         }
     }
 
+    public void eliminarNodo(NodoDobleMulta nodo) {
+        if (nodo == null) {
+            return;
+        }
+
+        if (nodo == inicio) {
+            inicio = nodo.siguiente;
+            if (inicio != null) {
+                inicio.anterior = null;
+            }
+        } else if (nodo == fin) {
+            fin = nodo.anterior;
+            if (fin != null) {
+                fin.siguiente = null;
+            }
+        } else {
+            nodo.anterior.siguiente = nodo.siguiente;
+            nodo.siguiente.anterior = nodo.anterior;
+        }
+        // Opcionalmente limpia el nodo
+        nodo.siguiente = null;
+        nodo.anterior = null;
+    }
+
+    public NodoDobleMulta getInicio() {
+        return inicio;
+    }
+
+    public NodoDobleMulta getNodoEnPosicion(int posicion) {
+        NodoDobleMulta actual = inicio;
+        int contador = 0;
+        while (actual != null && contador < posicion) {
+            actual = actual.siguiente;
+            contador++;
+        }
+        return actual;
+    }
+
+    // Mostrar de inicio a fin en JTable
+    public void llenarTablaInicioFin(DefaultTableModel modelo) {
+        modelo.setRowCount(0); // Limpiar tabla
+        NodoDobleMulta aux = inicio;
+        while (aux != null) {
+            Multa m = aux.multa;
+            modelo.addRow(new Object[]{
+                m.getDepartamento(),
+                m.getPlaca(),
+                m.getFecha(),
+                m.getDescripcion(),
+                m.getMonto()
+            });
+            aux = aux.siguiente;
+        }
+    }
+
+// Mostrar de fin a inicio en JTable
+    public void llenarTablaFinInicio(DefaultTableModel modelo) {
+        modelo.setRowCount(0); // Limpiar tabla
+        NodoDobleMulta aux = fin;
+        while (aux != null) {
+            Multa m = aux.multa;
+            modelo.addRow(new Object[]{
+                m.getDepartamento(),
+                m.getPlaca(),
+                m.getFecha(),
+                m.getDescripcion(),
+                m.getMonto()
+            });
+            aux = aux.anterior;
+        }
+    }
+
+    /*
     public void agregarAlInicio(Multa multa) {
         if (!estaVacia()) {
             inicio = new NodoDobleMulta(multa, inicio, null);
@@ -36,29 +110,8 @@ public class ListaDobleMultas {
         }
     }
 
-    public void mostrarListaInicioFin() {
-        if (!estaVacia()) {
-            StringBuilder datos = new StringBuilder("<-->");
-            NodoDobleMulta aux = inicio;
-            while (aux != null) {
-                datos.append("[ ").append(aux.multa.toString()).append(" ]<-->");
-                aux = aux.siguiente;
-            }
-            JOptionPane.showMessageDialog(null, datos.toString(), "Multas de Inicio a Fin", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
 
-    public void mostrarListaFinInicio() {
-        if (!estaVacia()) {
-            StringBuilder datos = new StringBuilder("<-->");
-            NodoDobleMulta aux = fin;
-            while (aux != null) {
-                datos.append("[ ").append(aux.multa.toString()).append(" ]<-->");
-                aux = aux.anterior;
-            }
-            JOptionPane.showMessageDialog(null, datos.toString(), "Multas de Fin a Inicio", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
+
 
     public Multa eliminarDelInicio() {
         Multa m = inicio.multa;
@@ -81,7 +134,8 @@ public class ListaDobleMultas {
         }
         return m;
     }
-
+    
+    
     public Multa eliminarEnPosicion(int posicion) {
         if (estaVacia() || posicion < 0) {
             return null;
@@ -118,18 +172,5 @@ public class ListaDobleMultas {
 
         return eliminada;
     }
-
-    public NodoDobleMulta getInicio() {
-        return inicio;
-    }
-
-    public NodoDobleMulta getNodoEnPosicion(int posicion) {
-        NodoDobleMulta actual = inicio;
-        int contador = 0;
-        while (actual != null && contador < posicion) {
-            actual = actual.siguiente;
-            contador++;
-        }
-        return actual;
-    }
+     */
 }

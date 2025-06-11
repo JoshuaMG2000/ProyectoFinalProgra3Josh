@@ -96,6 +96,8 @@ public class GestorArchivos {
         // Muestra un resumen al finalizar la carga
         JOptionPane.showMessageDialog(null, resumenPorDeptos.toString() + "\n\n" + cronometro.detenerComoTexto(), "✅ Carga Completada", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    
     // leerVehiculos que incluye departamento
 
     public List<Vehiculos> leerVehiculosConDepto(String rutaArchivo, String departamento) {
