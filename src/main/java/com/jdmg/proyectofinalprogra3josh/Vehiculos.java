@@ -76,6 +76,7 @@ public class Vehiculos {
         this.dpi = dpi;
     }
 
+    
     public String getNombrePropietario() {
         return nombrePropietario;
     }

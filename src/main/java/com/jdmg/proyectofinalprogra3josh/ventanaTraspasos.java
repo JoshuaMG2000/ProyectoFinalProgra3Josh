@@ -1,5 +1,6 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,7 +81,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
 // Modelo no editable y con columnas para multas
         DefaultTableModel modeloNoEditableMultas = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"DEPARTAMENTO", "PLACA", "DPI ANTERIOR", "NOMBRE ANTERIOR", "FECHA", "NUEVO DPI", "NUEVO NOMBRE"}
+                new String[]{"DEPARTAMENTO", "PLACA", "DPI NUEVO", "NOMBRE NUEVO", "FECHA", "DPI ANTERIOR", "NOMBRE ANTERIOR"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -130,8 +131,8 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         btnVolver = new javax.swing.JButton();
         btnInicioFin = new javax.swing.JButton();
         btnFinInicio = new javax.swing.JButton();
-        btnInsertarMulta = new javax.swing.JButton();
-        btnModificarMulta = new javax.swing.JButton();
+        btnInsertarTraspaso = new javax.swing.JButton();
+        btnModificarTraspaso = new javax.swing.JButton();
         btnEliminarMulta = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnbuscarListaDoble = new javax.swing.JButton();
@@ -166,7 +167,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "DEPARTAMENTO", "PLACA", "DPI ANTERIOR", "NOMBRE ANTERIOR", "FECHA", "NUEVO DPI", "NUEVO NOMBRE"
+                "DEPARTAMENTO", "PLACA", "DPI ACTUAL", "NOMBRE ACTUAL", "FECHA", "DPI ANTERIOR", "NOMBRE ANTERIOR"
             }
         ));
         jScrollPane1.setViewportView(tablaTraspasos);
@@ -212,31 +213,31 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         });
         jPanel1.add(btnFinInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 580, 140, 30));
 
-        btnInsertarMulta.setBackground(new java.awt.Color(153, 204, 0));
-        btnInsertarMulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnInsertarMulta.setForeground(new java.awt.Color(0, 51, 51));
-        btnInsertarMulta.setText("INSERTAR");
-        btnInsertarMulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnInsertarMulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnInsertarMulta.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertarTraspaso.setBackground(new java.awt.Color(153, 204, 0));
+        btnInsertarTraspaso.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnInsertarTraspaso.setForeground(new java.awt.Color(0, 51, 51));
+        btnInsertarTraspaso.setText("INSERTAR");
+        btnInsertarTraspaso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInsertarTraspaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInsertarTraspaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertarMultaActionPerformed(evt);
+                btnInsertarTraspasoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 580, 120, 30));
+        jPanel1.add(btnInsertarTraspaso, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 580, 120, 30));
 
-        btnModificarMulta.setBackground(new java.awt.Color(153, 204, 0));
-        btnModificarMulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnModificarMulta.setForeground(new java.awt.Color(0, 51, 51));
-        btnModificarMulta.setText("MODIFICAR");
-        btnModificarMulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnModificarMulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnModificarMulta.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarTraspaso.setBackground(new java.awt.Color(153, 204, 0));
+        btnModificarTraspaso.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnModificarTraspaso.setForeground(new java.awt.Color(0, 51, 51));
+        btnModificarTraspaso.setText("MODIFICAR");
+        btnModificarTraspaso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnModificarTraspaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarTraspaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarMultaActionPerformed(evt);
+                btnModificarTraspasoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 580, 110, 30));
+        jPanel1.add(btnModificarTraspaso, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 580, 110, 30));
 
         btnEliminarMulta.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminarMulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
@@ -291,7 +292,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.setVisible(false); 
+        this.setVisible(false);
         ventanaPrincipal.setVisible(true); // Muestra la ventana principal
         //Refrescar tabla ABB
         DefaultTableModel modeloABB = (DefaultTableModel) tablaABB.getModel();
@@ -312,13 +313,50 @@ public class ventanaTraspasos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnFinInicioActionPerformed
 
-    private void btnInsertarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarMultaActionPerformed
+    private void btnInsertarTraspasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarTraspasoActionPerformed
+        FormularioInsertarTraspaso formTraspaso = new FormularioInsertarTraspaso(
+                this, true, listaTraspasos, tablaTraspasos, arbolABB, arbolAVL);
+        formTraspaso.setLocationRelativeTo(this);
+        formTraspaso.setVisible(true);
+    }//GEN-LAST:event_btnInsertarTraspasoActionPerformed
 
-    }//GEN-LAST:event_btnInsertarMultaActionPerformed
+    private void btnModificarTraspasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarTraspasoActionPerformed
+        int fila = tablaTraspasos.getSelectedRow();
 
-    private void btnModificarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMultaActionPerformed
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fila para modificar.");
+            return;
+        }
 
-    }//GEN-LAST:event_btnModificarMultaActionPerformed
+        // Obtener placa y fecha desde la tabla
+        String placa = tablaTraspasos.getValueAt(fila, 1).toString();
+        String fecha = tablaTraspasos.getValueAt(fila, 4).toString(); // 🛑 columna 4 es FECHA
+
+        NodoCircularTraspaso actual = listaTraspasos.getInicio();
+
+        if (actual == null) {
+            JOptionPane.showMessageDialog(this, "La lista de traspasos está vacía.");
+            return;
+        }
+
+        NodoCircularTraspaso inicio = actual;
+
+        do {
+            Traspaso t = actual.getTraspaso();
+            if (t.getPlaca().equalsIgnoreCase(placa) && t.getFecha().equals(fecha)) {
+                
+                FormularioModificarTraspaso form = new FormularioModificarTraspaso(
+                        this, true, t, tablaTraspasos, fila, arbolABB, arbolAVL
+                );
+                form.setLocationRelativeTo(this);
+                form.setVisible(true);
+                return;
+            }
+            actual = actual.getSiguiente();
+        } while (actual != null && actual != inicio);
+
+        JOptionPane.showMessageDialog(this, "No se encontró el traspaso en la lista.");
+    }//GEN-LAST:event_btnModificarTraspasoActionPerformed
 
     private void btnEliminarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMultaActionPerformed
 
@@ -338,8 +376,8 @@ public class ventanaTraspasos extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarMulta;
     private javax.swing.JButton btnFinInicio;
     private javax.swing.JButton btnInicioFin;
-    private javax.swing.JButton btnInsertarMulta;
-    private javax.swing.JButton btnModificarMulta;
+    private javax.swing.JButton btnInsertarTraspaso;
+    private javax.swing.JButton btnModificarTraspaso;
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnbuscarListaDoble;
     private javax.swing.JLabel fondo;
