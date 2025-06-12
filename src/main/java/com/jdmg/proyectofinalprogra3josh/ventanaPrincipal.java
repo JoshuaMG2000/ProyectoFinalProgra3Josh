@@ -12,7 +12,9 @@ import javax.swing.table.DefaultTableModel;
 public class ventanaPrincipal extends javax.swing.JFrame {
 
     private ListaDobleMultas listaMultas;
+    private ListaCircularTraspasos listaTraspasos;
     private ventanaMultas ventanaMultas;
+    private ventanaTraspasos ventanaTraspasos;
 
     public ventanaPrincipal() {
         initComponents();
@@ -122,7 +124,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         };
 
         tablaVehiculosAVL.setModel(modeloNoEditableAVL);
+
         listaMultas = new ListaDobleMultas();
+        listaTraspasos = new ListaCircularTraspasos();
     }
 
     @SuppressWarnings("unchecked")
@@ -153,12 +157,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnModificarABB = new javax.swing.JButton();
         btnModificarAVL = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cargarDatos = new javax.swing.JMenuItem();
         VerMultas = new javax.swing.JMenuItem();
+        VerTraspasos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -431,10 +437,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel6.setToolTipText("");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 490, -1));
 
-        fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1880, 800));
-
         jLabel8.setBackground(new java.awt.Color(153, 204, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 255, 51));
@@ -442,6 +444,18 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel8.setText("VEHICULOS REGISTRADOS POR DEPARTAMENTO");
         jLabel8.setToolTipText("");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1340, 50));
+
+        jButton1.setText("prueba traspasos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, -1, -1));
+
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1880, 800));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -469,6 +483,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(VerMultas);
+
+        VerTraspasos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        VerTraspasos.setText("VER TRASPASOS");
+        VerTraspasos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        VerTraspasos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerTraspasosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(VerTraspasos);
 
         jMenuBar1.add(jMenu1);
 
@@ -807,7 +831,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             String ruta = carpetaSeleccionada.getAbsolutePath();
 
             // Llama al gestor para cargar todo
-            gestor.cargarTodoDesdeCarpeta(ruta, arbolito, arbolitoAVL, listaMultas);
+            gestor.cargarTodoDesdeCarpeta(ruta, arbolito, arbolitoAVL, listaMultas, listaTraspasos);
 
             // Refrescar tabla ABB
             DefaultTableModel modeloABB = (DefaultTableModel) tablaVehiculosABB.getModel();
@@ -821,6 +845,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
             ventanaMultas = new ventanaMultas(this, arbolito, arbolitoAVL, tablaVehiculosABB, tablaVehiculosAVL, listaMultas);
             ventanaMultas.llenarMultas(listaMultas);
+
+            ventanaTraspasos = new ventanaTraspasos(this, arbolito, arbolitoAVL, tablaVehiculosABB, tablaVehiculosAVL, listaTraspasos);
+            ventanaTraspasos.llenarTraspasos(listaTraspasos);
 
         }
     }//GEN-LAST:event_cargarDatosActionPerformed
@@ -899,6 +926,44 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Primero debes cargar los datos desde una carpeta.");
         }
     }//GEN-LAST:event_VerMultasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        imprimirListaTraspasosEnConsola();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void VerTraspasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerTraspasosActionPerformed
+        if (ventanaTraspasos != null) {
+            
+            ventanaTraspasos.setLocationRelativeTo(this);
+            ventanaTraspasos.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero debes cargar los datos desde una carpeta.");
+        }
+    }//GEN-LAST:event_VerTraspasosActionPerformed
+    public void imprimirListaTraspasosEnConsola() {
+        if (listaTraspasos == null || listaTraspasos.estaVacia()) {
+            System.out.println("La lista de traspasos está vacía.");
+            return;
+        }
+
+        System.out.println("Contenido de la lista circular de traspasos:");
+        NodoCircularTraspaso actual = listaTraspasos.getInicio();
+        NodoCircularTraspaso primero = actual;
+
+        do {
+            Traspaso t = actual.getTraspaso();
+            System.out.println("Departamento: " + t.getDepartamento()
+                    + ", Placa: " + t.getPlaca()
+                    + ", DPI Anterior: " + t.getDpiAnterior()
+                    + ", Nombre Anterior: " + t.getNombreAnterior()
+                    + ", Fecha: " + t.getFecha()
+                    + ", DPI Nuevo: " + t.getDpiNuevo()
+                    + ", Nombre Nuevo: " + t.getNombreNuevo());
+            actual = actual.getSiguiente();
+        } while (actual != null && actual != primero);
+    }
+
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
             llenarTablaInOrdenAVL(nodo.izquierdo, modelo);
@@ -941,6 +1006,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem VerMultas;
+    private javax.swing.JMenuItem VerTraspasos;
     private javax.swing.JButton btnEliminarVehiculoABB;
     private javax.swing.JButton btnEliminarVehiculoAVL;
     private javax.swing.JButton btnInOrdenABB;
@@ -958,6 +1024,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnbuscarAVL;
     private javax.swing.JMenuItem cargarDatos;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

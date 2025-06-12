@@ -13,7 +13,8 @@ public class GestorArchivos {
     Cronometro cronometro = new Cronometro();
 
     // Método que carga vehículos desde múltiples carpetas (una por departamento)
-    public void cargarTodoDesdeCarpeta(String rutaBase, ArbolBinario abb, ArbolBinarioAVL avl, ListaDobleMultas listaMultas) {
+    public void cargarTodoDesdeCarpeta(String rutaBase, ArbolBinario abb, ArbolBinarioAVL avl,
+            ListaDobleMultas listaMultas, ListaCircularTraspasos listaTraspasos) {
         // Se crea un objeto File con la ruta que recibe como parámetro
         File carpetaPrincipal = new File(rutaBase);
         // Si la ruta no es una carpeta, muestra error y sale del método
@@ -25,6 +26,7 @@ public class GestorArchivos {
         int totalArchivos = 0;
         int totalVehiculos = 0;
         int totalMultas = 0;
+        int totalTraspasos = 0;
 
         // Mensaje acumulado por departamentos
         StringBuilder resumenPorDeptos = new StringBuilder("📋 RESUMEN POR DEPARTAMENTO:\n\n");
@@ -40,6 +42,7 @@ public class GestorArchivos {
             String nombreDepto = carpeta.getName();
             int contadorDepto = 0;
             int contadorDeptoMultas = 0;
+            int contadorDeptoTraspasos = 0;
 
             //VEHICULOS
             // Recorre cada archivo dentro de esa subcarpeta
@@ -69,9 +72,16 @@ public class GestorArchivos {
                         listaMultas.agregarAlFinal(m);
                     }
 
+                } else if (archivo.getName().endsWith("_traspasos.txt")) {
+                    List<Traspaso> lista = leerTraspasosConDepto(archivo.getAbsolutePath(), nombreDepto);
+                    contadorDeptoTraspasos += lista.size();
+                    totalTraspasos += lista.size();
+
+                    for (Traspaso t : lista) {
+                        listaTraspasos.insertarAlFinal(t);
+                    }
                 }
             }
-
             // Si el departamento tiene al menos un vehículo cargado...
             if (contadorDepto > 0) {
                 // Agrega al mensaje un resumen de ese departamento: ejemplo "📍 Chimaltenango: 50 vehículos"
@@ -80,6 +90,10 @@ public class GestorArchivos {
             }
             if (contadorDeptoMultas > 0) {
                 resumenPorDeptos.append("   ↪ Multas: ").append(contadorDeptoMultas).append("\n");
+            }
+
+            if (contadorDeptoTraspasos > 0) {
+                resumenPorDeptos.append("   ↪ Traspasos: ").append(contadorDeptoTraspasos).append("\n");
             }
 
         }
@@ -92,14 +106,47 @@ public class GestorArchivos {
         resumenPorDeptos.append("\n🚗 Total vehículos insertados: ").append(totalVehiculos);
 
         resumenPorDeptos.append("\n💸 Total multas insertadas: ").append(totalMultas);
+        resumenPorDeptos.append("\n🔄 Total traspasos insertados: ").append(totalTraspasos);
 
         // Muestra un resumen al finalizar la carga
         JOptionPane.showMessageDialog(null, resumenPorDeptos.toString() + "\n\n" + cronometro.detenerComoTexto(), "✅ Carga Completada", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    
-    // leerVehiculos que incluye departamento
 
+    public List<Traspaso> leerTraspasosConDepto(String rutaArchivo, String departamento) {
+        List<Traspaso> lista = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            boolean primera = true;
+
+            while ((linea = br.readLine()) != null) {
+                if (primera) {
+                    primera = false;
+                    continue; // Saltar encabezado
+                }
+
+                String[] p = linea.split(",");
+                if (p.length >= 6) {
+                    Traspaso t = new Traspaso(
+                            departamento,
+                            p[0], // placa
+                            p[1], // DPI anterior
+                            p[2], // nombre anterior
+                            p[3], // fecha
+                            p[4], // DPI nuevo
+                            p[5] // nombre nuevo
+                    );
+                    lista.add(t);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo de traspasos: " + rutaArchivo + " -> " + e.getMessage());
+        }
+
+        return lista;
+    }
+
+    // leerVehiculos que incluye departamento
     public List<Vehiculos> leerVehiculosConDepto(String rutaArchivo, String departamento) {
         List<Vehiculos> lista = new ArrayList<>();
 
