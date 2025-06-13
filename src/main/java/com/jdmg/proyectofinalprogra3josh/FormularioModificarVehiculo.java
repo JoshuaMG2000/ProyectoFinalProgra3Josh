@@ -23,6 +23,8 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
         txtDepartamento.setText(vehiculo.getDepartamento());
         txtPlaca.setText(vehiculo.getPlaca());
         txtPlaca.setEditable(false);
+        txtMultas.setEditable(false);
+        txtTraspasos.setEditable(false);
         txtDpi.setText(vehiculo.getDpi());
         txtNombre.setText(vehiculo.getNombrePropietario());
         txtMarca.setText(vehiculo.getMarca());

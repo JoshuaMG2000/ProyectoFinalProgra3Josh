@@ -1,6 +1,7 @@
 package com.jdmg.proyectofinalprogra3josh;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ListaCircularTraspasos {
 
@@ -74,6 +75,71 @@ public class ListaCircularTraspasos {
 
     public void setUltimo(NodoCircularTraspaso ultimo) {
         this.ultimo = ultimo;
+    }
+
+    public void eliminarNodo(NodoCircularTraspaso nodo) {
+        if (nodo == null || estaVacia()) {
+            return;
+        }
+
+        if (nodo == nodo.siguiente) { // Solo un nodo en la lista
+            ultimo = null;
+        } else {
+            nodo.anterior.siguiente = nodo.siguiente;
+            nodo.siguiente.anterior = nodo.anterior;
+            if (nodo == ultimo) {
+                ultimo = nodo.anterior;
+            }
+        }
+
+        // Limpiar referencias
+        nodo.siguiente = null;
+        nodo.anterior = null;
+    }
+
+    public void llenarTablaInicioFin(DefaultTableModel modelo) {
+        modelo.setRowCount(0); // Limpiar tabla
+
+        NodoCircularTraspaso aux = getInicio();
+
+        if (aux != null) {
+            NodoCircularTraspaso primero = aux;
+            do {
+                Traspaso t = aux.traspaso;
+                modelo.addRow(new Object[]{
+                    t.getDepartamento(),
+                    t.getPlaca(),
+                    t.getDpiAnterior(),
+                    t.getNombreAnterior(),
+                    t.getFecha(),
+                    t.getDpiNuevo(),
+                    t.getNombreNuevo()
+                });
+                aux = aux.siguiente;
+            } while (aux != primero);
+        }
+    }
+
+    public void llenarTablaFinInicio(DefaultTableModel modelo) {
+        modelo.setRowCount(0); // Limpiar tabla
+
+        NodoCircularTraspaso aux = getUltimo();
+        if (aux != null) {
+            NodoCircularTraspaso primero = aux.siguiente;
+            do {
+                Traspaso t = aux.traspaso;
+                modelo.addRow(new Object[]{
+                    t.getDepartamento(),
+                    t.getPlaca(),
+                    t.getDpiAnterior(),
+                    t.getNombreAnterior(),
+                    t.getFecha(),
+                    t.getDpiNuevo(),
+                    t.getNombreNuevo()
+                });
+                aux = aux.anterior;
+            } while (aux != primero.anterior); // Hasta llegar al "antes" del primero
+        }
     }
 
 }

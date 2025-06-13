@@ -2,7 +2,10 @@ package com.jdmg.proyectofinalprogra3josh;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -81,7 +84,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
 // Modelo no editable y con columnas para multas
         DefaultTableModel modeloNoEditableMultas = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"DEPARTAMENTO", "PLACA", "DPI NUEVO", "NOMBRE NUEVO", "FECHA", "DPI ANTERIOR", "NOMBRE ANTERIOR"}
+                new String[]{"DEPARTAMENTO", "PLACA", "DPI ANTERIOR", "NOMBRE ANTERIOR", "FECHA", "DPI NUEVO", "NOMBRE NUEVO"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -93,6 +96,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         tablaTraspasos.setModel(modeloNoEditableMultas);
 
     }
+    Cronometro cronometro = new Cronometro();
 
     public void llenarTraspasos(ListaCircularTraspasos lista) {
         DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
@@ -167,7 +171,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "DEPARTAMENTO", "PLACA", "DPI ACTUAL", "NOMBRE ACTUAL", "FECHA", "DPI ANTERIOR", "NOMBRE ANTERIOR"
+                "DEPARTAMENTO", "PLACA", "DPI ANTERIOR", "NOMBRE ANTERIOR", "FECHA", "DPI NUEVO", "NOMBRE NUEVO"
             }
         ));
         jScrollPane1.setViewportView(tablaTraspasos);
@@ -306,11 +310,15 @@ public class ventanaTraspasos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnInicioFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioFinActionPerformed
-
+        DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
+        listaTraspasos.llenarTablaInicioFin(modelo);
+        JOptionPane.showMessageDialog(this, "Lista mostrada de INICIO a FIN.");
     }//GEN-LAST:event_btnInicioFinActionPerformed
 
     private void btnFinInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinInicioActionPerformed
-
+        DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
+        listaTraspasos.llenarTablaFinInicio(modelo);
+        JOptionPane.showMessageDialog(this, "Lista mostrada de FIN a INICIO.");
     }//GEN-LAST:event_btnFinInicioActionPerformed
 
     private void btnInsertarTraspasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarTraspasoActionPerformed
@@ -344,7 +352,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         do {
             Traspaso t = actual.getTraspaso();
             if (t.getPlaca().equalsIgnoreCase(placa) && t.getFecha().equals(fecha)) {
-                
+
                 FormularioModificarTraspaso form = new FormularioModificarTraspaso(
                         this, true, t, tablaTraspasos, fila, arbolABB, arbolAVL
                 );
@@ -359,15 +367,109 @@ public class ventanaTraspasos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarTraspasoActionPerformed
 
     private void btnEliminarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMultaActionPerformed
+        int fila = tablaTraspasos.getSelectedRow();
 
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fila para eliminar.");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas eliminar este traspaso?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            String placa = tablaTraspasos.getValueAt(fila, 1).toString();
+            String fecha = tablaTraspasos.getValueAt(fila, 4).toString();
+
+            NodoCircularTraspaso actual = listaTraspasos.getInicio();
+            if (actual == null) {
+                JOptionPane.showMessageDialog(this, "La lista de traspasos está vacía.");
+                return;
+            }
+
+            boolean encontrado = false;
+            do {
+                Traspaso t = actual.traspaso;
+                if (t.getPlaca().equalsIgnoreCase(placa) && t.getFecha().equals(fecha)) {
+                    listaTraspasos.eliminarNodo(actual);
+                    // Buscar la placa en ABB y AVL
+                    NodoArbol nodoABB = arbolABB.BuscarVehiculoABB(placa);
+                    NodoArbolAVL nodoAVL = arbolAVL.BuscarVehiculoAVL(placa);
+
+                    // Actualizar cantidad de traspasos en ABB y AVL (restar 1)
+                    if (nodoABB != null && nodoABB.vehiculo.getCantidadTraspasos() > 0) {
+                        nodoABB.vehiculo.setCantidadTraspasos(nodoABB.vehiculo.getCantidadTraspasos() - 1);
+                    }
+                    if (nodoAVL != null && nodoAVL.vehiculo.getCantidadTraspasos() > 0) {
+                        nodoAVL.vehiculo.setCantidadTraspasos(nodoAVL.vehiculo.getCantidadTraspasos() - 1);
+                    }
+                    // Eliminar fila en la tabla
+                    DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
+                    modelo.removeRow(fila);
+
+                    JOptionPane.showMessageDialog(this, "✅ Traspaso eliminado correctamente.");
+                    encontrado = true;
+                    break;
+                }
+                actual = actual.siguiente;
+            } while (actual != listaTraspasos.getInicio());
+
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(this, "No se encontró el traspaso en la lista.");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar traspaso: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnEliminarMultaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-
+        cargarTraspasosEnTablaDesdeLista();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnbuscarListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarListaDobleActionPerformed
+    public void cargarTraspasosEnTablaDesdeLista() {
+        DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
+        modelo.setRowCount(0); // Limpiar tabla
 
+        cronometro.iniciar();
+
+        NodoCircularTraspaso actual = listaTraspasos.getInicio();
+        if (actual != null) {
+            NodoCircularTraspaso primero = actual;
+            do {
+                Traspaso t = actual.traspaso;
+                modelo.addRow(new Object[]{
+                    t.getDepartamento(),
+                    t.getPlaca(),
+                    t.getDpiAnterior(),
+                    t.getNombreAnterior(),
+                    t.getFecha(),
+                    t.getDpiNuevo(),
+                    t.getNombreNuevo()
+                });
+                actual = actual.siguiente;
+            } while (actual != primero);
+        }
+
+        tablaTraspasos.setRowSorter(null); // Quitar filtro
+        JOptionPane.showMessageDialog(null, cronometro.detenerComoTexto(), null, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
+    private void btnbuscarListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarListaDobleActionPerformed
+        String placaBuscada = jtextFieldPlaca.getText().trim().toUpperCase();
+        if (placaBuscada.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una placa en el campo de texto.");
+            return;
+        }
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tablaTraspasos.getModel());
+        tablaTraspasos.setRowSorter(sorter);
+
+        RowFilter<TableModel, Object> filtro = RowFilter.regexFilter("(?i)^" + placaBuscada + "$", 1); // Coincidencia exacta, columna 1 = placa
+        sorter.setRowFilter(filtro);
     }//GEN-LAST:event_btnbuscarListaDobleActionPerformed
 
 

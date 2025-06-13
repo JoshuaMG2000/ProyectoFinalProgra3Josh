@@ -35,17 +35,17 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         txtDepartamento = new javax.swing.JTextField();
         txtPlaca = new javax.swing.JTextField();
-        txtDpiAnterior = new javax.swing.JTextField();
+        txtDpiNuevo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtNombreAnterior = new javax.swing.JTextField();
+        txtNombreNuevo = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNuevoDpi = new javax.swing.JTextField();
-        txtNuevoNombre = new javax.swing.JTextField();
+        txtDpiAnterior = new javax.swing.JTextField();
+        txtNombreAnterior = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,8 +72,8 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
         txtPlaca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 237, 30));
 
-        txtDpiAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jPanel1.add(txtDpiAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 237, 30));
+        txtDpiNuevo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(txtDpiNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 237, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
@@ -93,8 +93,8 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
         jLabel1.setText("INGRESE LOS DATOS DEL NUEVO TRASPASO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 350, 30));
 
-        txtNombreAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jPanel1.add(txtNombreAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 237, 30));
+        txtNombreNuevo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(txtNombreNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 237, 30));
 
         txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 237, 30));
@@ -123,11 +123,11 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
         jLabel6.setText("DPI ANTERIOR:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 30));
 
-        txtNuevoDpi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jPanel1.add(txtNuevoDpi, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 237, 30));
+        txtDpiAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(txtDpiAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 237, 30));
 
-        txtNuevoNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jPanel1.add(txtNuevoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 237, 30));
+        txtNombreAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(txtNombreAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 237, 30));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
@@ -153,11 +153,11 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
         try {
             String departamento = txtDepartamento.getText().trim();
             String placa = txtPlaca.getText().trim().toUpperCase();
-            String dpiAnterior = txtDpiAnterior.getText().trim(); //ACTUAL
-            String nombreAnterior = txtNombreAnterior.getText().trim(); //ACTUAL
+            String dpiNuevo = txtDpiNuevo.getText().trim();
+            String nombreNuevo = txtNombreNuevo.getText().trim();
             String fecha = txtFecha.getText().trim();
-            String dpiNuevo = txtNuevoDpi.getText().trim();
-            String nombreNuevo = txtNuevoNombre.getText().trim();
+            String dpiAnterior = txtDpiAnterior.getText().trim();
+            String nombreAnterior = txtNombreAnterior.getText().trim();
             if (departamento.isEmpty() || placa.isEmpty() || dpiAnterior.isEmpty()
                     || nombreAnterior.isEmpty() || fecha.isEmpty()
                     || dpiNuevo.isEmpty() || nombreNuevo.isEmpty()) {
@@ -181,17 +181,18 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
             Traspaso nuevoTraspaso = new Traspaso(departamento, placa, dpiAnterior, nombreAnterior, fecha, dpiNuevo, nombreNuevo);
             listaTraspasos.insertarAlFinal(nuevoTraspaso); // ListaCircular
 
-            // Actualizar los datos del vehículo (nombre y DPI) y contar traspasos
+            // Actualizar los datos del vehículo (nombre y DPI) y contar traspasos, 
+            //Por que el .txt está malo, tiene alrevés en base a las fechas los traspasos.
             if (nodoABB != null) {
                 nodoABB.vehiculo.setDepartamento(departamento);
-                nodoABB.vehiculo.setDpi(dpiAnterior);
-                nodoABB.vehiculo.setNombrePropietario(nombreAnterior);
+                nodoABB.vehiculo.setDpi(dpiNuevo);
+                nodoABB.vehiculo.setNombrePropietario(nombreNuevo);
                 nodoABB.vehiculo.setCantidadTraspasos(nodoABB.vehiculo.getCantidadTraspasos() + 1);
             }
             if (nodoAVL != null) {
                 nodoAVL.vehiculo.setDepartamento(departamento);
-                nodoAVL.vehiculo.setDpi(dpiAnterior);
-                nodoAVL.vehiculo.setNombrePropietario(nombreAnterior);
+                nodoAVL.vehiculo.setDpi(dpiNuevo);
+                nodoAVL.vehiculo.setNombrePropietario(nombreNuevo);
                 nodoAVL.vehiculo.setCantidadTraspasos(nodoAVL.vehiculo.getCantidadTraspasos() + 1);
             }
 
@@ -218,7 +219,7 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
@@ -232,10 +233,10 @@ public class FormularioInsertarTraspaso extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtDpiAnterior;
+    private javax.swing.JTextField txtDpiNuevo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombreAnterior;
-    private javax.swing.JTextField txtNuevoDpi;
-    private javax.swing.JTextField txtNuevoNombre;
+    private javax.swing.JTextField txtNombreNuevo;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }

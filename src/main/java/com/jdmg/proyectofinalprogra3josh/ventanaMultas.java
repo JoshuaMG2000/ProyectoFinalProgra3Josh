@@ -394,7 +394,6 @@ public class ventanaMultas extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error al eliminar multa: " + ex.getMessage());
         }
-
     }//GEN-LAST:event_btnEliminarMultaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
