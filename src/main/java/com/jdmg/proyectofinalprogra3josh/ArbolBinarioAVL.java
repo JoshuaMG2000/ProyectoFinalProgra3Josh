@@ -1,6 +1,8 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.awt.Desktop;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -271,6 +273,8 @@ public class ArbolBinarioAVL {
     public boolean EstaVacio() {
         return raiz == null;
     }
+
+   
 
     public void exportarAVL(String rutaArchivo) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {

@@ -5,6 +5,7 @@ package com.jdmg.proyectofinalprogra3josh;
  * @author jgald
  */
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,8 +19,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     public ventanaPrincipal() {
         initComponents();
-        // ====== ESTILO PROFESIONAL PARA JTable ======
 
+// ====== ESTILO PROFESIONAL PARA JTable ======
 // 1. Fuente general
         tablaVehiculosABB.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
 
@@ -71,7 +72,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         tablaVehiculosABB.setModel(modeloNoEditable);
 
-        // ====== ESTILO PROFESIONAL PARA tablaVehiculosAVL ======
+// ====== ESTILO PROFESIONAL PARA tablaVehiculosAVL ======
 // 1. Fuente general
         tablaVehiculosAVL.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
 
@@ -125,6 +126,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         tablaVehiculosAVL.setModel(modeloNoEditableAVL);
 
+        //IMPORTANTE
         listaMultas = new ListaDobleMultas();
         listaTraspasos = new ListaCircularTraspasos();
         btnEncriptarABB.setVisible(true);
@@ -154,7 +156,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnEliminarVehiculoAVL = new javax.swing.JButton();
         btnbuscarAVL = new javax.swing.JButton();
         jtextFieldPlacaAVL = new javax.swing.JTextField();
-        btnVerArbolABB = new javax.swing.JButton();
+        btnExportarABBaTXT = new javax.swing.JButton();
         btnPreOrdenAVL = new javax.swing.JButton();
         btnInOrdenAVL = new javax.swing.JButton();
         btnPostOrdenAVL = new javax.swing.JButton();
@@ -162,11 +164,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnModificarAVL = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnEncriptarABB = new javax.swing.JButton();
         btnDesencriptarABB = new javax.swing.JButton();
         btnEncriptarAVL = new javax.swing.JButton();
         btnDesencriptarAVL = new javax.swing.JButton();
+        btnVerArbolABB = new javax.swing.JButton();
+        btnVerArbolAVL = new javax.swing.JButton();
+        btnExportarAVLaTXT = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -360,18 +364,18 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jtextFieldPlacaAVL.setText("Ingrese No. Placa");
         jPanel1.add(jtextFieldPlacaAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 410, 170, 30));
 
-        btnVerArbolABB.setBackground(new java.awt.Color(44, 48, 57));
-        btnVerArbolABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnVerArbolABB.setForeground(new java.awt.Color(255, 255, 51));
-        btnVerArbolABB.setText("VER ARBOLITO");
-        btnVerArbolABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVerArbolABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVerArbolABB.addActionListener(new java.awt.event.ActionListener() {
+        btnExportarABBaTXT.setBackground(new java.awt.Color(153, 153, 153));
+        btnExportarABBaTXT.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnExportarABBaTXT.setForeground(new java.awt.Color(0, 0, 0));
+        btnExportarABBaTXT.setText("EXPORTAR ABB A .TXT");
+        btnExportarABBaTXT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExportarABBaTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportarABBaTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerArbolABBActionPerformed(evt);
+                btnExportarABBaTXTActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 100, 30));
+        jPanel1.add(btnExportarABBaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, 30));
 
         btnPreOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -453,14 +457,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel8.setToolTipText("");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1340, 50));
 
-        jButton1.setText("prueba traspasos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 70, -1, -1));
-
         btnEncriptarABB.setBackground(new java.awt.Color(204, 204, 0));
         btnEncriptarABB.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnEncriptarABB.setForeground(new java.awt.Color(0, 102, 153));
@@ -512,6 +508,45 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnDesencriptarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 110, 30));
+
+        btnVerArbolABB.setBackground(new java.awt.Color(44, 48, 57));
+        btnVerArbolABB.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVerArbolABB.setForeground(new java.awt.Color(255, 255, 51));
+        btnVerArbolABB.setText("VER ARBOL ABB");
+        btnVerArbolABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerArbolABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerArbolABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerArbolABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 100, 30));
+
+        btnVerArbolAVL.setBackground(new java.awt.Color(44, 48, 57));
+        btnVerArbolAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVerArbolAVL.setForeground(new java.awt.Color(255, 255, 51));
+        btnVerArbolAVL.setText("VER ARBOL AVL");
+        btnVerArbolAVL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerArbolAVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerArbolAVL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerArbolAVLActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVerArbolAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 100, 30));
+
+        btnExportarAVLaTXT.setBackground(new java.awt.Color(153, 153, 153));
+        btnExportarAVLaTXT.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnExportarAVLaTXT.setForeground(new java.awt.Color(0, 0, 0));
+        btnExportarAVLaTXT.setText("EXPORTAR AVL A .TXT");
+        btnExportarAVLaTXT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExportarAVLaTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportarAVLaTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarAVLaTXTActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExportarAVLaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 680, -1, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -875,9 +910,23 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnbuscarAVLActionPerformed
 
-    private void btnVerArbolABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerArbolABBActionPerformed
-        arbolito.exportarABBComoImagen(arbolito);
-    }//GEN-LAST:event_btnVerArbolABBActionPerformed
+    private void btnExportarABBaTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarABBaTXTActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar ABB en .txt");
+
+        int opcion = chooser.showSaveDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                arbolito.exportarABB(archivo.getAbsolutePath()); // arbolito es tu ABB
+                JOptionPane.showMessageDialog(this, "✅ ABB exportado con éxito.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al exportar ABB.");
+            }
+        }
+    }//GEN-LAST:event_btnExportarABBaTXTActionPerformed
 
     private void cargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarDatosActionPerformed
 
@@ -978,7 +1027,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void VerMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerMultasActionPerformed
         if (ventanaMultas != null) {
-            //ventanaMultas.llenarMultas(listaMultas); // Refrescar datos antes de mostrar
             ventanaMultas.setLocationRelativeTo(this);
             ventanaMultas.setVisible(true);
             this.setVisible(false);
@@ -998,67 +1046,78 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_VerTraspasosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        imprimirListaTraspasosEnConsola();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnEncriptarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarABBActionPerformed
+        cronometro.iniciar();
         arbolito.encryptABB();
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
         modelo.setRowCount(0);
         llenarTablaDesdeABB(arbolito.raiz, modelo);
         btnEncriptarABB.setVisible(false);
         btnDesencriptarABB.setVisible(true);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
+
     }//GEN-LAST:event_btnEncriptarABBActionPerformed
 
     private void btnDesencriptarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarABBActionPerformed
+        cronometro.iniciar();
         arbolito.decryptABB();
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
         modelo.setRowCount(0);
         llenarTablaDesdeABB(arbolito.raiz, modelo);
         btnEncriptarABB.setVisible(true);
         btnDesencriptarABB.setVisible(false);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
     }//GEN-LAST:event_btnDesencriptarABBActionPerformed
 
     private void btnEncriptarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarAVLActionPerformed
+        cronometro.iniciar();
         arbolitoAVL.encryptAVL();
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
         modelo.setRowCount(0);
         llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modelo);
         btnEncriptarAVL.setVisible(false);
         btnDesencriptarAVL.setVisible(true);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
     }//GEN-LAST:event_btnEncriptarAVLActionPerformed
 
     private void btnDesencriptarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarAVLActionPerformed
+        cronometro.iniciar();
         arbolitoAVL.decryptAVL();
         DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
         modelo.setRowCount(0);
         llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modelo);
         btnEncriptarAVL.setVisible(true);
         btnDesencriptarAVL.setVisible(false);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
     }//GEN-LAST:event_btnDesencriptarAVLActionPerformed
-    public void imprimirListaTraspasosEnConsola() {
-        if (listaTraspasos == null || listaTraspasos.estaVacia()) {
-            System.out.println("La lista de traspasos está vacía.");
-            return;
+
+    private void btnVerArbolAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerArbolAVLActionPerformed
+
+    }//GEN-LAST:event_btnVerArbolAVLActionPerformed
+
+    private void btnVerArbolABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerArbolABBActionPerformed
+        cronometro.iniciar();
+        arbolito.exportarABBComoImagen(arbolito);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
+    }//GEN-LAST:event_btnVerArbolABBActionPerformed
+
+    private void btnExportarAVLaTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarAVLaTXTActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar AVL en .txt");
+
+        int opcion = chooser.showSaveDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                arbolitoAVL.exportarAVL(archivo.getAbsolutePath()); // arbolitoAVL es tu AVL
+                JOptionPane.showMessageDialog(this, "✅ AVL exportado con éxito.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al exportar AVL.");
+            }
         }
-
-        System.out.println("Contenido de la lista circular de traspasos:");
-        NodoCircularTraspaso actual = listaTraspasos.getInicio();
-        NodoCircularTraspaso primero = actual;
-
-        do {
-            Traspaso t = actual.getTraspaso();
-            System.out.println("Departamento: " + t.getDepartamento()
-                    + ", Placa: " + t.getPlaca()
-                    + ", DPI Anterior: " + t.getDpiAnterior()
-                    + ", Nombre Anterior: " + t.getNombreAnterior()
-                    + ", Fecha: " + t.getFecha()
-                    + ", DPI Nuevo: " + t.getDpiNuevo()
-                    + ", Nombre Nuevo: " + t.getNombreNuevo());
-            actual = actual.getSiguiente();
-        } while (actual != null && actual != primero);
-    }
+    }//GEN-LAST:event_btnExportarAVLaTXTActionPerformed
 
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
@@ -1109,6 +1168,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarVehiculoAVL;
     private javax.swing.JButton btnEncriptarABB;
     private javax.swing.JButton btnEncriptarAVL;
+    private javax.swing.JButton btnExportarABBaTXT;
+    private javax.swing.JButton btnExportarAVLaTXT;
     private javax.swing.JButton btnInOrdenABB;
     private javax.swing.JButton btnInOrdenAVL;
     private javax.swing.JButton btnInsertarABB;
@@ -1120,11 +1181,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnPreOrdenABB;
     private javax.swing.JButton btnPreOrdenAVL;
     private javax.swing.JButton btnVerArbolABB;
+    private javax.swing.JButton btnVerArbolAVL;
     private javax.swing.JButton btnbuscarABB;
     private javax.swing.JButton btnbuscarAVL;
     private javax.swing.JMenuItem cargarDatos;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

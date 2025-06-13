@@ -1,5 +1,8 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -125,7 +128,6 @@ public class ventanaMultas extends javax.swing.JFrame {
         btnEliminarMulta = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jtextFieldPlaca = new javax.swing.JTextField();
         btnbuscarListaDoble = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
@@ -133,6 +135,7 @@ public class ventanaMultas extends javax.swing.JFrame {
         btnFinInicio = new javax.swing.JButton();
         btnEncriptarMultas = new javax.swing.JButton();
         btnDesencriptarMultas = new javax.swing.JButton();
+        btnExportarMultas = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -221,14 +224,6 @@ public class ventanaMultas extends javax.swing.JFrame {
         jLabel3.setText("S.I.R.V.E. v4.0");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        jButton1.setText("PARA PRUEBAS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 650, -1, 40));
-
         jtextFieldPlaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jtextFieldPlaca.setText("Ingrese No. Placa");
         jPanel1.add(jtextFieldPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 180, 30));
@@ -310,6 +305,19 @@ public class ventanaMultas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnDesencriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
+
+        btnExportarMultas.setBackground(new java.awt.Color(255, 255, 255));
+        btnExportarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnExportarMultas.setForeground(new java.awt.Color(0, 51, 51));
+        btnExportarMultas.setText("EXPORTAR A .TXT");
+        btnExportarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExportarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportarMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarMultasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExportarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 150, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -426,10 +434,6 @@ public class ventanaMultas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarMultaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        imprimirListaMultasEnConsola();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnbuscarListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarListaDobleActionPerformed
         String placaBuscada = jtextFieldPlaca.getText().trim().toUpperCase();
 
@@ -478,24 +482,24 @@ public class ventanaMultas extends javax.swing.JFrame {
         btnEncriptarMultas.setVisible(true);
         btnDesencriptarMultas.setVisible(false);
     }//GEN-LAST:event_btnDesencriptarMultasActionPerformed
-    public void imprimirListaMultasEnConsola() {
-        if (listaMultas == null || listaMultas.getInicio() == null) {
-            System.out.println("La lista de multas está vacía.");
-            return;
-        }
 
-        NodoDobleMulta actual = listaMultas.getInicio();
-        System.out.println("Contenido de la lista doble de multas:");
-        while (actual != null) {
-            Multa multa = actual.multa;
-            System.out.println("Departamento: " + multa.getDepartamento()
-                    + ", Placa: " + multa.getPlaca()
-                    + ", Fecha: " + multa.getFecha()
-                    + ", Descripción: " + multa.getDescripcion()
-                    + ", Monto: " + multa.getMonto());
-            actual = actual.siguiente;
+    private void btnExportarMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarMultasActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar Multas en .txt");
+
+        int opcion = chooser.showSaveDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                listaMultas.exportarMultas(archivo.getAbsolutePath()); // listaMultas es tu ListaDobleMultas
+                JOptionPane.showMessageDialog(this, "✅ Multas exportadas con éxito.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al exportar multas.");
+            }
         }
-    }
+    }//GEN-LAST:event_btnExportarMultasActionPerformed
 
     public void cargarMultasEnTablaDesdeLista() {
         DefaultTableModel modelo = (DefaultTableModel) tablaMultas.getModel();
@@ -523,6 +527,7 @@ public class ventanaMultas extends javax.swing.JFrame {
     private javax.swing.JButton btnDesencriptarMultas;
     private javax.swing.JButton btnEliminarMulta;
     private javax.swing.JButton btnEncriptarMultas;
+    private javax.swing.JButton btnExportarMultas;
     private javax.swing.JButton btnFinInicio;
     private javax.swing.JButton btnInicioFin;
     private javax.swing.JButton btnInsertarMulta;
@@ -530,7 +535,6 @@ public class ventanaMultas extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnbuscarListaDoble;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

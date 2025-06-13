@@ -19,6 +19,14 @@ public class ArbolBinario {
         raiz = null;
     }
 
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NodoArbol raiz) {
+        this.raiz = raiz;
+    }
+
     //Para comparar duplicados y proteger al ABB de los mismos , 
     public boolean insertarVehiculo(Vehiculos v) {
         if (BuscarVehiculoABB(v.getPlaca()) != null) {
@@ -61,31 +69,6 @@ public class ArbolBinario {
 
     public boolean EstaVacio() {
         return raiz == null;
-    }
-
-    // Recorridos
-    public void PreOrden(NodoArbol r) {
-        if (r != null) {
-            System.out.println(r);
-            PreOrden(r.HijoIzquierdo);
-            PreOrden(r.HijoDerecho);
-        }
-    }
-
-    public void InOrden(NodoArbol r) {
-        if (r != null) {
-            InOrden(r.HijoIzquierdo);
-            System.out.println(r);
-            InOrden(r.HijoDerecho);
-        }
-    }
-
-    public void PostOrden(NodoArbol r) {
-        if (r != null) {
-            PostOrden(r.HijoIzquierdo);
-            PostOrden(r.HijoDerecho);
-            System.out.println(r);
-        }
     }
 
     // Búsqueda por placa
@@ -187,42 +170,6 @@ public class ArbolBinario {
         return reemplazo;
     }
 
-    public boolean modificarDatosVehiculo(String placa) {
-        NodoArbol nodo = BuscarVehiculoABB(placa);
-        if (nodo == null) {
-            return false;
-        }
-
-        Vehiculos v = nodo.vehiculo;
-
-        // Mostrar diálogos para editar 
-        try {
-            String nuevoNombre = JOptionPane.showInputDialog("Nuevo propietario:", v.getNombrePropietario());
-            String nuevoDPI = JOptionPane.showInputDialog("Nuevo DPI Propietario:", v.getDpi());
-            String nuevaMarca = JOptionPane.showInputDialog("Nueva marca:", v.getMarca());
-            String nuevoModelo = JOptionPane.showInputDialog("Nuevo modelo:", v.getModelo());
-            int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Nuevo año:", v.getAnio()));
-            int nuevasMultas = Integer.parseInt(JOptionPane.showInputDialog("Nuevas multas:", v.getCantidadMultas()));
-            int nuevosTraspasos = Integer.parseInt(JOptionPane.showInputDialog("Nuevos traspasos:", v.getCantidadTraspasos()));
-
-            // Actualizar objeto
-            v.setNombrePropietario(nuevoNombre);
-            v.setDpi(nuevoDPI);
-            v.setMarca(nuevaMarca);
-            v.setModelo(nuevoModelo);
-            v.setAnio(nuevoAnio);
-            v.setCantidadMultas(nuevasMultas);
-            v.setCantidadTraspasos(nuevosTraspasos);
-            return true;
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error en datos numéricos: " + e.getMessage());
-            return false;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
-            return false;
-        }
-    }
-
     public void generarDotABB(NodoArbol nodo, BufferedWriter writer) throws IOException {
         if (nodo != null) {
             String etiqueta = nodo.vehiculo.getPlaca();
@@ -260,14 +207,7 @@ public class ArbolBinario {
         }
     }
 
-    public NodoArbol getRaiz() {
-        return raiz;
-    }
-
-    public void setRaiz(NodoArbol raiz) {
-        this.raiz = raiz;
-    }
-
+    //EXPORTAR PARA .TXT
     public void exportarABB(String rutaArchivo) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
             // encabezado
@@ -277,6 +217,7 @@ public class ArbolBinario {
         }
     }
 
+    //EXPORTAR PARA .TXT
     private void exportarNodoABB(NodoArbol nodo, BufferedWriter bw) throws IOException {
         if (nodo == null) {
             return;
