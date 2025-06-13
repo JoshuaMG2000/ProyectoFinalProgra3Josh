@@ -1,5 +1,8 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -100,4 +103,58 @@ public class ListaDobleMultas {
         }
     }
 
+    public void exportarMultas(String rutaArchivo) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            bw.write("Departamento,Placa,Fecha,Descripcion,Monto");
+            bw.newLine();
+            NodoDobleMulta aux = inicio;
+            while (aux != null) {
+                Multa m = aux.multa;
+                bw.write(String.join(",",
+                        m.getDepartamento(),
+                        m.getPlaca(),
+                        m.getFecha(),
+                        m.getDescripcion(),
+                        String.valueOf(m.getMonto())
+                ));
+                bw.newLine();
+                aux = aux.siguiente;
+            }
+        }
+    }
+
+    /**
+     * Encripta todas las Multas en la lista doble.
+     */
+    public void encryptMultas() {
+        NodoDobleMulta aux = inicio;
+        while (aux != null) {
+            Multa m = aux.multa;
+            m.setDepartamento(CryptoUtils.encrypt(m.getDepartamento()));
+            m.setPlaca(CryptoUtils.encrypt(m.getPlaca()));
+            m.setFecha(CryptoUtils.encrypt(m.getFecha()));
+            m.setDescripcion(CryptoUtils.encrypt(m.getDescripcion()));
+            
+            String sMonto = Double.toString(m.getMonto());
+            m.setMonto(Double.parseDouble(CryptoUtils.encrypt(sMonto)));
+
+            aux = aux.siguiente;
+        }
+    }
+
+    /**
+     * Desencripta todas las Multas en la lista doble.
+     */
+    public void decryptMultas() {
+        NodoDobleMulta aux = inicio;
+        while (aux != null) {
+            Multa m = aux.multa;
+            m.setDepartamento(CryptoUtils.decrypt(m.getDepartamento()));
+            m.setPlaca(CryptoUtils.decrypt(m.getPlaca()));
+            m.setFecha(CryptoUtils.decrypt(m.getFecha()));
+            m.setDescripcion(CryptoUtils.decrypt(m.getDescripcion()));
+            m.setMonto(Double.parseDouble(CryptoUtils.decrypt(Double.toString(m.getMonto()))));
+            aux = aux.siguiente;
+        }
+    }
 }

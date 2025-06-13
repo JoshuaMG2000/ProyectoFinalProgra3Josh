@@ -2,6 +2,9 @@ package com.jdmg.proyectofinalprogra3josh;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ListaCircularTraspasos {
 
@@ -142,4 +145,72 @@ public class ListaCircularTraspasos {
         }
     }
 
+    public void exportarTraspasos(String rutaArchivo) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            bw.write("Departamento,Placa,DPI_Anterior,Nombre_Anterior,Fecha,DPI_Nuevo,Nombre_Nuevo");
+            bw.newLine();
+            NodoCircularTraspaso aux = getInicio();
+            if (aux != null) {
+                NodoCircularTraspaso primero = aux;
+                do {
+                    Traspaso t = aux.traspaso;
+                    bw.write(String.join(",",
+                            t.getDepartamento(),
+                            t.getPlaca(),
+                            t.getDpiAnterior(),
+                            t.getNombreAnterior(),
+                            t.getFecha(),
+                            t.getDpiNuevo(),
+                            t.getNombreNuevo()
+                    ));
+                    bw.newLine();
+                    aux = aux.siguiente;
+                } while (aux != primero);
+            }
+        }
+    }
+
+    /**
+     * Encripta todos los Traspasos en la lista circular.
+     */
+    public void encryptTraspasos() {
+        if (ultimo == null) {
+            return;
+        }
+        NodoCircularTraspaso primero = ultimo.siguiente;
+        NodoCircularTraspaso aux = primero;
+        do {
+            Traspaso t = aux.traspaso;
+            t.setDepartamento(CryptoUtils.encrypt(t.getDepartamento()));
+            t.setPlaca(CryptoUtils.encrypt(t.getPlaca()));
+            t.setDpiAnterior(CryptoUtils.encrypt(t.getDpiAnterior()));
+            t.setNombreAnterior(CryptoUtils.encrypt(t.getNombreAnterior()));
+            t.setFecha(CryptoUtils.encrypt(t.getFecha()));
+            t.setDpiNuevo(CryptoUtils.encrypt(t.getDpiNuevo()));
+            t.setNombreNuevo(CryptoUtils.encrypt(t.getNombreNuevo()));
+            aux = aux.siguiente;
+        } while (aux != primero);
+    }
+
+    /**
+     * Desencripta todos los Traspasos en la lista circular.
+     */
+    public void decryptTraspasos() {
+        if (ultimo == null) {
+            return;
+        }
+        NodoCircularTraspaso primero = ultimo.siguiente;
+        NodoCircularTraspaso aux = primero;
+        do {
+            Traspaso t = aux.traspaso;
+            t.setDepartamento(CryptoUtils.decrypt(t.getDepartamento()));
+            t.setPlaca(CryptoUtils.decrypt(t.getPlaca()));
+            t.setDpiAnterior(CryptoUtils.decrypt(t.getDpiAnterior()));
+            t.setNombreAnterior(CryptoUtils.decrypt(t.getNombreAnterior()));
+            t.setFecha(CryptoUtils.decrypt(t.getFecha()));
+            t.setDpiNuevo(CryptoUtils.decrypt(t.getDpiNuevo()));
+            t.setNombreNuevo(CryptoUtils.decrypt(t.getNombreNuevo()));
+            aux = aux.siguiente;
+        } while (aux != primero);
+    }
 }

@@ -29,7 +29,7 @@ public class ventanaMultas extends javax.swing.JFrame {
         this.arbolAVL = arbolAVL;
         this.tablaABB = tablaABB;
         this.tablaAVL = tablaAVL;
-        this.listaMultas = listaMultas; 
+        this.listaMultas = listaMultas;
 
         // 1. Fuente general
         tablaMultas.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
@@ -89,6 +89,8 @@ public class ventanaMultas extends javax.swing.JFrame {
 
 // Asignar modelo a tabla
         tablaMultas.setModel(modeloNoEditableMultas);
+        btnEncriptarMultas.setVisible(true);
+        btnDesencriptarMultas.setVisible(false);
     }
 
     public void llenarMultas(ListaDobleMultas lista) {
@@ -129,6 +131,8 @@ public class ventanaMultas extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnInicioFin = new javax.swing.JButton();
         btnFinInicio = new javax.swing.JButton();
+        btnEncriptarMultas = new javax.swing.JButton();
+        btnDesencriptarMultas = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -176,7 +180,7 @@ public class ventanaMultas extends javax.swing.JFrame {
                 btnInsertarMultaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 580, 120, 30));
+        jPanel1.add(btnInsertarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 580, 120, 30));
 
         btnModificarMulta.setBackground(new java.awt.Color(153, 204, 0));
         btnModificarMulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
@@ -189,7 +193,7 @@ public class ventanaMultas extends javax.swing.JFrame {
                 btnModificarMultaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 580, 110, 30));
+        jPanel1.add(btnModificarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, 110, 30));
 
         btnEliminarMulta.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminarMulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
@@ -202,7 +206,7 @@ public class ventanaMultas extends javax.swing.JFrame {
                 btnEliminarMultaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 580, 110, 30));
+        jPanel1.add(btnEliminarMulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 580, 110, 30));
 
         jLabel8.setBackground(new java.awt.Color(153, 204, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 50)); // NOI18N
@@ -223,7 +227,7 @@ public class ventanaMultas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 580, -1, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 650, -1, 40));
 
         jtextFieldPlaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jtextFieldPlaca.setText("Ingrese No. Placa");
@@ -281,6 +285,32 @@ public class ventanaMultas extends javax.swing.JFrame {
         });
         jPanel1.add(btnFinInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 580, 140, 30));
 
+        btnEncriptarMultas.setBackground(new java.awt.Color(153, 204, 0));
+        btnEncriptarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnEncriptarMultas.setForeground(new java.awt.Color(0, 51, 51));
+        btnEncriptarMultas.setText("ENCRIPTAR");
+        btnEncriptarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEncriptarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEncriptarMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEncriptarMultasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEncriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
+
+        btnDesencriptarMultas.setBackground(new java.awt.Color(153, 204, 0));
+        btnDesencriptarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnDesencriptarMultas.setForeground(new java.awt.Color(0, 51, 51));
+        btnDesencriptarMultas.setText("DESENCRIPTAR");
+        btnDesencriptarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDesencriptarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDesencriptarMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesencriptarMultasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDesencriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1500, 810));
@@ -325,7 +355,7 @@ public class ventanaMultas extends javax.swing.JFrame {
         String fecha = tablaMultas.getValueAt(fila, 2).toString();
 
         // Buscar la multa correspondiente en la lista doble
-        NodoDobleMulta actual = listaMultas.getInicio(); 
+        NodoDobleMulta actual = listaMultas.getInicio();
         while (actual != null) {
             Multa m = actual.multa;
             if (m.getPlaca().equalsIgnoreCase(placa) && m.getFecha().equals(fecha)) {
@@ -430,6 +460,24 @@ public class ventanaMultas extends javax.swing.JFrame {
         listaMultas.llenarTablaFinInicio(modelo);
         JOptionPane.showMessageDialog(this, "Lista mostrada de FIN a INICIO.");
     }//GEN-LAST:event_btnFinInicioActionPerformed
+
+    private void btnEncriptarMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarMultasActionPerformed
+        listaMultas.encryptMultas();
+        DefaultTableModel modelo = (DefaultTableModel) tablaMultas.getModel();
+        modelo.setRowCount(0);
+        cargarMultasEnTablaDesdeLista();
+        btnEncriptarMultas.setVisible(false);
+        btnDesencriptarMultas.setVisible(true);
+    }//GEN-LAST:event_btnEncriptarMultasActionPerformed
+
+    private void btnDesencriptarMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarMultasActionPerformed
+        listaMultas.decryptMultas();
+        DefaultTableModel modelo = (DefaultTableModel) tablaMultas.getModel();
+        modelo.setRowCount(0);
+        cargarMultasEnTablaDesdeLista();
+        btnEncriptarMultas.setVisible(true);
+        btnDesencriptarMultas.setVisible(false);
+    }//GEN-LAST:event_btnDesencriptarMultasActionPerformed
     public void imprimirListaMultasEnConsola() {
         if (listaMultas == null || listaMultas.getInicio() == null) {
             System.out.println("La lista de multas está vacía.");
@@ -472,7 +520,9 @@ public class ventanaMultas extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnDesencriptarMultas;
     private javax.swing.JButton btnEliminarMulta;
+    private javax.swing.JButton btnEncriptarMultas;
     private javax.swing.JButton btnFinInicio;
     private javax.swing.JButton btnInicioFin;
     private javax.swing.JButton btnInsertarMulta;

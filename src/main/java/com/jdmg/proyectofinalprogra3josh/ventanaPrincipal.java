@@ -127,6 +127,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         listaMultas = new ListaDobleMultas();
         listaTraspasos = new ListaCircularTraspasos();
+        btnEncriptarABB.setVisible(true);
+        btnDesencriptarABB.setVisible(false);
+        btnEncriptarAVL.setVisible(true);
+        btnDesencriptarAVL.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -159,6 +163,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnEncriptarABB = new javax.swing.JButton();
+        btnDesencriptarABB = new javax.swing.JButton();
+        btnEncriptarAVL = new javax.swing.JButton();
+        btnDesencriptarAVL = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -320,7 +328,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnInsertarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 680, 120, 30));
+        jPanel1.add(btnInsertarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 680, 90, 30));
 
         btnEliminarVehiculoAVL.setBackground(new java.awt.Color(0, 51, 51));
         btnEliminarVehiculoAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -363,7 +371,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnVerArbolABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 100, 30));
+        jPanel1.add(btnVerArbolABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 100, 30));
 
         btnPreOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -451,7 +459,59 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 70, -1, -1));
+
+        btnEncriptarABB.setBackground(new java.awt.Color(204, 204, 0));
+        btnEncriptarABB.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnEncriptarABB.setForeground(new java.awt.Color(0, 102, 153));
+        btnEncriptarABB.setText("ENCRIPTAR");
+        btnEncriptarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEncriptarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEncriptarABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEncriptarABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEncriptarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 340, 110, 30));
+
+        btnDesencriptarABB.setBackground(new java.awt.Color(204, 204, 0));
+        btnDesencriptarABB.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnDesencriptarABB.setForeground(new java.awt.Color(0, 0, 0));
+        btnDesencriptarABB.setText("DESENCRIPTAR");
+        btnDesencriptarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDesencriptarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDesencriptarABB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesencriptarABBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDesencriptarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 340, 110, 30));
+
+        btnEncriptarAVL.setBackground(new java.awt.Color(204, 204, 0));
+        btnEncriptarAVL.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnEncriptarAVL.setForeground(new java.awt.Color(0, 102, 153));
+        btnEncriptarAVL.setText("ENCRIPTAR");
+        btnEncriptarAVL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEncriptarAVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEncriptarAVL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEncriptarAVLActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEncriptarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 110, 30));
+
+        btnDesencriptarAVL.setBackground(new java.awt.Color(204, 204, 0));
+        btnDesencriptarAVL.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnDesencriptarAVL.setForeground(new java.awt.Color(0, 0, 0));
+        btnDesencriptarAVL.setText("DESENCRIPTAR");
+        btnDesencriptarAVL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDesencriptarAVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDesencriptarAVL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesencriptarAVLActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDesencriptarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 110, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -927,13 +987,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_VerMultasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        imprimirListaTraspasosEnConsola();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void VerTraspasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerTraspasosActionPerformed
         if (ventanaTraspasos != null) {
-            
+
             ventanaTraspasos.setLocationRelativeTo(this);
             ventanaTraspasos.setVisible(true);
             this.setVisible(false);
@@ -941,6 +997,46 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Primero debes cargar los datos desde una carpeta.");
         }
     }//GEN-LAST:event_VerTraspasosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        imprimirListaTraspasosEnConsola();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnEncriptarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarABBActionPerformed
+        arbolito.encryptABB();
+        DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
+        modelo.setRowCount(0);
+        llenarTablaDesdeABB(arbolito.raiz, modelo);
+        btnEncriptarABB.setVisible(false);
+        btnDesencriptarABB.setVisible(true);
+    }//GEN-LAST:event_btnEncriptarABBActionPerformed
+
+    private void btnDesencriptarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarABBActionPerformed
+        arbolito.decryptABB();
+        DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
+        modelo.setRowCount(0);
+        llenarTablaDesdeABB(arbolito.raiz, modelo);
+        btnEncriptarABB.setVisible(true);
+        btnDesencriptarABB.setVisible(false);
+    }//GEN-LAST:event_btnDesencriptarABBActionPerformed
+
+    private void btnEncriptarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarAVLActionPerformed
+        arbolitoAVL.encryptAVL();
+        DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
+        modelo.setRowCount(0);
+        llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modelo);
+        btnEncriptarAVL.setVisible(false);
+        btnDesencriptarAVL.setVisible(true);
+    }//GEN-LAST:event_btnEncriptarAVLActionPerformed
+
+    private void btnDesencriptarAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarAVLActionPerformed
+        arbolitoAVL.decryptAVL();
+        DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
+        modelo.setRowCount(0);
+        llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modelo);
+        btnEncriptarAVL.setVisible(true);
+        btnDesencriptarAVL.setVisible(false);
+    }//GEN-LAST:event_btnDesencriptarAVLActionPerformed
     public void imprimirListaTraspasosEnConsola() {
         if (listaTraspasos == null || listaTraspasos.estaVacia()) {
             System.out.println("La lista de traspasos está vacía.");
@@ -1007,8 +1103,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem VerMultas;
     private javax.swing.JMenuItem VerTraspasos;
+    private javax.swing.JButton btnDesencriptarABB;
+    private javax.swing.JButton btnDesencriptarAVL;
     private javax.swing.JButton btnEliminarVehiculoABB;
     private javax.swing.JButton btnEliminarVehiculoAVL;
+    private javax.swing.JButton btnEncriptarABB;
+    private javax.swing.JButton btnEncriptarAVL;
     private javax.swing.JButton btnInOrdenABB;
     private javax.swing.JButton btnInOrdenAVL;
     private javax.swing.JButton btnInsertarABB;

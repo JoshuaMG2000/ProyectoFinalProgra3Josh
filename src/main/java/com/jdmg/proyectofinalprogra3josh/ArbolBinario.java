@@ -268,4 +268,96 @@ public class ArbolBinario {
         this.raiz = raiz;
     }
 
+    public void exportarABB(String rutaArchivo) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            // encabezado
+            bw.write("Departamento,Placa,DPI,Propietario,Marca,Modelo,Año,Multas,Traspasos");
+            bw.newLine();
+            exportarNodoABB(raiz, bw);
+        }
+    }
+
+    private void exportarNodoABB(NodoArbol nodo, BufferedWriter bw) throws IOException {
+        if (nodo == null) {
+            return;
+        }
+        exportarNodoABB(nodo.HijoIzquierdo, bw);
+        Vehiculos v = nodo.vehiculo;
+        bw.write(String.join(",",
+                v.getDepartamento(),
+                v.getPlaca(),
+                v.getDpi(),
+                v.getNombrePropietario(),
+                v.getMarca(),
+                v.getModelo(),
+                String.valueOf(v.getAnio()),
+                String.valueOf(v.getCantidadMultas()),
+                String.valueOf(v.getCantidadTraspasos())
+        ));
+        bw.newLine();
+        exportarNodoABB(nodo.HijoDerecho, bw);
+    }
+
+    /**
+     * Recorre todo el ABB y encripta todos los campos String de cada Vehiculos.
+     */
+    public void encryptABB() {
+        encryptNodo(raiz);
+    }
+
+    private void encryptNodo(NodoArbol nodo) {
+        if (nodo == null) {
+            return;
+        }
+        Vehiculos v = nodo.vehiculo;
+        v.setDepartamento(CryptoUtils.encrypt(v.getDepartamento()));
+        v.setPlaca(CryptoUtils.encrypt(v.getPlaca()));
+        v.setDpi(CryptoUtils.encrypt(v.getDpi()));
+        v.setNombrePropietario(CryptoUtils.encrypt(v.getNombrePropietario()));
+        v.setMarca(CryptoUtils.encrypt(v.getMarca()));
+        v.setModelo(CryptoUtils.encrypt(v.getModelo()));
+        // encriptar año
+        String sAnio = Integer.toString(v.getAnio());
+        v.setAnio(Integer.parseInt(CryptoUtils.encrypt(sAnio)));
+
+        // encriptar cantidadMultas
+        String sMultas = Integer.toString(v.getCantidadMultas());
+        v.setCantidadMultas(Integer.parseInt(CryptoUtils.encrypt(sMultas)));
+
+        // encriptar cantidadTraspasos
+        String sTrans = Integer.toString(v.getCantidadTraspasos());
+        v.setCantidadTraspasos(Integer.parseInt(CryptoUtils.encrypt(sTrans)));
+        encryptNodo(nodo.HijoIzquierdo);
+        encryptNodo(nodo.HijoDerecho);
+    }
+
+    /**
+     * Recorre todo el ABB y desencripta todos los campos String de cada
+     * Vehiculos.
+     */
+    public void decryptABB() {
+        decryptNodo(raiz);
+    }
+
+    private void decryptNodo(NodoArbol nodo) {
+        if (nodo == null) {
+            return;
+        }
+        Vehiculos v = nodo.vehiculo;
+        v.setDepartamento(CryptoUtils.decrypt(v.getDepartamento()));
+        v.setPlaca(CryptoUtils.decrypt(v.getPlaca()));
+        v.setDpi(CryptoUtils.decrypt(v.getDpi()));
+        v.setNombrePropietario(CryptoUtils.decrypt(v.getNombrePropietario()));
+        v.setMarca(CryptoUtils.decrypt(v.getMarca()));
+        v.setModelo(CryptoUtils.decrypt(v.getModelo()));
+        // desencriptar año
+        v.setAnio(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getAnio()))));
+        // desencriptar multas
+        v.setCantidadMultas(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getCantidadMultas()))));
+        // desencriptar traspasos
+        v.setCantidadTraspasos(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getCantidadTraspasos()))));
+
+        decryptNodo(nodo.HijoIzquierdo);
+        decryptNodo(nodo.HijoDerecho);
+    }
 }

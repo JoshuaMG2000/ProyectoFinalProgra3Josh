@@ -1,5 +1,10 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -265,5 +270,90 @@ public class ArbolBinarioAVL {
 
     public boolean EstaVacio() {
         return raiz == null;
+    }
+
+    public void exportarAVL(String rutaArchivo) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            bw.write("Departamento,Placa,DPI,Propietario,Marca,Modelo,Año,Multas,Traspasos");
+            bw.newLine();
+            List<Vehiculos> lista = new ArrayList<>();
+            inOrden(raiz, lista);
+            for (Vehiculos v : lista) {
+                bw.write(String.join(",",
+                        v.getDepartamento(),
+                        v.getPlaca(),
+                        v.getDpi(),
+                        v.getNombrePropietario(),
+                        v.getMarca(),
+                        v.getModelo(),
+                        String.valueOf(v.getAnio()),
+                        String.valueOf(v.getCantidadMultas()),
+                        String.valueOf(v.getCantidadTraspasos())
+                ));
+                bw.newLine();
+            }
+        }
+    }
+
+    /**
+     * Encripta todos los Vehiculos en el AVL.
+     */
+    public void encryptAVL() {
+        encryptNodoAVL(raiz);
+    }
+
+    private void encryptNodoAVL(NodoArbolAVL nodo) {
+        if (nodo == null) {
+            return;
+        }
+        Vehiculos v = nodo.vehiculo;
+        v.setDepartamento(CryptoUtils.encrypt(v.getDepartamento()));
+        v.setPlaca(CryptoUtils.encrypt(v.getPlaca()));
+        v.setDpi(CryptoUtils.encrypt(v.getDpi()));
+        v.setNombrePropietario(CryptoUtils.encrypt(v.getNombrePropietario()));
+        v.setMarca(CryptoUtils.encrypt(v.getMarca()));
+        v.setModelo(CryptoUtils.encrypt(v.getModelo()));
+        // encriptar año
+        String sAnio = Integer.toString(v.getAnio());
+        v.setAnio(Integer.parseInt(CryptoUtils.encrypt(sAnio)));
+
+        // encriptar cantidadMultas
+        String sMultas = Integer.toString(v.getCantidadMultas());
+        v.setCantidadMultas(Integer.parseInt(CryptoUtils.encrypt(sMultas)));
+
+        // encriptar cantidadTraspasos
+        String sTrans = Integer.toString(v.getCantidadTraspasos());
+        v.setCantidadTraspasos(Integer.parseInt(CryptoUtils.encrypt(sTrans)));
+        encryptNodoAVL(nodo.izquierdo);
+        encryptNodoAVL(nodo.derecho);
+    }
+
+    /**
+     * Desencripta todos los Vehiculos en el AVL.
+     */
+    public void decryptAVL() {
+        decryptNodoAVL(raiz);
+    }
+
+    private void decryptNodoAVL(NodoArbolAVL nodo) {
+        if (nodo == null) {
+            return;
+        }
+        Vehiculos v = nodo.vehiculo;
+        v.setDepartamento(CryptoUtils.decrypt(v.getDepartamento()));
+        v.setPlaca(CryptoUtils.decrypt(v.getPlaca()));
+        v.setDpi(CryptoUtils.decrypt(v.getDpi()));
+        v.setNombrePropietario(CryptoUtils.decrypt(v.getNombrePropietario()));
+        v.setMarca(CryptoUtils.decrypt(v.getMarca()));
+        v.setModelo(CryptoUtils.decrypt(v.getModelo()));
+        // desencriptar año
+        v.setAnio(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getAnio()))));
+        // desencriptar multas
+        v.setCantidadMultas(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getCantidadMultas()))));
+        // desencriptar traspasos
+        v.setCantidadTraspasos(Integer.parseInt(CryptoUtils.decrypt(Integer.toString(v.getCantidadTraspasos()))));
+
+        decryptNodoAVL(nodo.izquierdo);
+        decryptNodoAVL(nodo.derecho);
     }
 }
