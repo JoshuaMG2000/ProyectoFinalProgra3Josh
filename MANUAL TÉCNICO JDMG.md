@@ -1,8 +1,8 @@
 # Proyecto SIRVE — Sistema Inteligente de Registro de Vehículos y Evaluación
 
-**Autor:** [Tu Nombre]  
-**Curso:** Programación III (Estructuras de Datos)  
-**Facultad:** Ingeniería en Sistemas, Universidad Mariano Gálvez  
+**Autor:** Josué David Martínez Galdámez 
+**Curso:** Programación III 
+**Facultad:** Ingeniería en Sistemas, Universidad Mariano Gálvez Sede Mazatenango
 
 ---
 
@@ -22,4 +22,27 @@ En este proyecto he desarrollado una aplicación de escritorio en **Java Swing**
 - **Graphviz**: generación de gráﬁcos de estructuras de datos (DOT → PNG).
 - **Maven**: gestión de dependencias y compilación.
 - **AbsoluteLayout** (NetBeans): diseño de formularios.
+
+## 2. Arquitectura General
+
+El proyecto se organiza en tres capas principales:
+
+1. **Modelo de Dominio**  
+   Clases que representan entidades: `Vehiculos`, `Multa`, `Traspaso`.
+
+2. **Estructuras de Datos**  
+   - ABB: `ArbolBinario` y `NodoArbol`.  
+   - AVL: `ArbolBinarioAVL` y `NodoArbolAVL`.  
+   - Lista Doblemente Enlazada: `ListaDobleMultas` y `NodoDobleMulta`.  
+   - Lista Circular Doblemente Enlazada: `ListaCircularTraspasos` y `NodoCircularTraspaso`.  
+
+3. **Persistencia y Lógica de Negocio**  
+   - `GestorArchivos`: carga/exporta datos desde archivos de texto.  
+   - `CryptoUtils`: métodos de encriptación / desencriptación César.  
+   - `Cronometro`: mide tiempos en milisegundos.
+
+4. **Vista (GUI)**  
+   - Ventanas principales y formularios (package `com.jdmg.proyectofinalprogra3josh`):  
+     `ventanaPrincipal`, `ventanaMultas`, `ventanaTraspasos`, y sus formularios de CRUD.
+
 
