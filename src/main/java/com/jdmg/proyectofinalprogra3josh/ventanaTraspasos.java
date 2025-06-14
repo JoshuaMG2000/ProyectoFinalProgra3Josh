@@ -149,6 +149,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         btnEncriptarTraspasos = new javax.swing.JButton();
         btnDesencriptarTraspasos = new javax.swing.JButton();
         btnExportarTraspasos = new javax.swing.JButton();
+        btnImportarTraspasos = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -294,9 +295,9 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         jtextFieldPlaca.setText("Ingrese No. Placa");
         jPanel1.add(jtextFieldPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 180, 30));
 
-        btnEncriptarTraspasos.setBackground(new java.awt.Color(153, 204, 0));
+        btnEncriptarTraspasos.setBackground(new java.awt.Color(51, 51, 51));
         btnEncriptarTraspasos.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnEncriptarTraspasos.setForeground(new java.awt.Color(0, 51, 51));
+        btnEncriptarTraspasos.setForeground(new java.awt.Color(255, 51, 51));
         btnEncriptarTraspasos.setText("ENCRIPTAR");
         btnEncriptarTraspasos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEncriptarTraspasos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -307,9 +308,9 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         });
         jPanel1.add(btnEncriptarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
 
-        btnDesencriptarTraspasos.setBackground(new java.awt.Color(153, 204, 0));
+        btnDesencriptarTraspasos.setBackground(new java.awt.Color(51, 153, 0));
         btnDesencriptarTraspasos.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnDesencriptarTraspasos.setForeground(new java.awt.Color(0, 51, 51));
+        btnDesencriptarTraspasos.setForeground(new java.awt.Color(0, 0, 0));
         btnDesencriptarTraspasos.setText("DESENCRIPTAR");
         btnDesencriptarTraspasos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDesencriptarTraspasos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -318,12 +319,12 @@ public class ventanaTraspasos extends javax.swing.JFrame {
                 btnDesencriptarTraspasosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDesencriptarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
+        jPanel1.add(btnDesencriptarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 120, 30));
 
-        btnExportarTraspasos.setBackground(new java.awt.Color(255, 255, 255));
+        btnExportarTraspasos.setBackground(new java.awt.Color(44, 48, 57));
         btnExportarTraspasos.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnExportarTraspasos.setForeground(new java.awt.Color(0, 0, 0));
-        btnExportarTraspasos.setText("EXPORTAR A .TXT");
+        btnExportarTraspasos.setForeground(new java.awt.Color(255, 255, 51));
+        btnExportarTraspasos.setText("EXPORTAR .TXT");
         btnExportarTraspasos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExportarTraspasos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExportarTraspasos.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +332,20 @@ public class ventanaTraspasos extends javax.swing.JFrame {
                 btnExportarTraspasosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExportarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 140, 30));
+        jPanel1.add(btnExportarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 120, 30));
+
+        btnImportarTraspasos.setBackground(new java.awt.Color(0, 51, 51));
+        btnImportarTraspasos.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        btnImportarTraspasos.setForeground(new java.awt.Color(204, 255, 153));
+        btnImportarTraspasos.setText("IMPORTAR .TXT");
+        btnImportarTraspasos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarTraspasos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImportarTraspasos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarTraspasosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImportarTraspasos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 130, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -556,6 +570,28 @@ public class ventanaTraspasos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExportarTraspasosActionPerformed
 
+    private void btnImportarTraspasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarTraspasosActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Selecciona los traspasos encriptados");
+
+        int opcion = chooser.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                listaTraspasos = new ListaCircularTraspasos();
+                listaTraspasos.importarTraspasosDesdeArchivo(archivo, listaTraspasos);
+                DefaultTableModel modelo = (DefaultTableModel) tablaTraspasos.getModel();
+                modelo.setRowCount(0);
+                cargarTraspasosEnTablaDesdeLista();
+                JOptionPane.showMessageDialog(this, "✅ Traspasos encriptados importados.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al importar traspasos.");
+            }
+        }
+    }//GEN-LAST:event_btnImportarTraspasosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -564,6 +600,7 @@ public class ventanaTraspasos extends javax.swing.JFrame {
     private javax.swing.JButton btnEncriptarTraspasos;
     private javax.swing.JButton btnExportarTraspasos;
     private javax.swing.JButton btnFinInicio;
+    private javax.swing.JButton btnImportarTraspasos;
     private javax.swing.JButton btnInicioFin;
     private javax.swing.JButton btnInsertarTraspaso;
     private javax.swing.JButton btnModificarTraspaso;

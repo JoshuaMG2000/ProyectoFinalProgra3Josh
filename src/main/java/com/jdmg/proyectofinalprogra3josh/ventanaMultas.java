@@ -93,7 +93,7 @@ public class ventanaMultas extends javax.swing.JFrame {
 // Asignar modelo a tabla
         tablaMultas.setModel(modeloNoEditableMultas);
         btnEncriptarMultas.setVisible(true);
-        btnDesencriptarMultas.setVisible(false);
+        btnDesencriptarMultas.setVisible(true);
     }
 
     public void llenarMultas(ListaDobleMultas lista) {
@@ -136,6 +136,7 @@ public class ventanaMultas extends javax.swing.JFrame {
         btnEncriptarMultas = new javax.swing.JButton();
         btnDesencriptarMultas = new javax.swing.JButton();
         btnExportarMultas = new javax.swing.JButton();
+        btnImportarMultas = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -280,9 +281,9 @@ public class ventanaMultas extends javax.swing.JFrame {
         });
         jPanel1.add(btnFinInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 580, 140, 30));
 
-        btnEncriptarMultas.setBackground(new java.awt.Color(153, 204, 0));
+        btnEncriptarMultas.setBackground(new java.awt.Color(51, 51, 51));
         btnEncriptarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnEncriptarMultas.setForeground(new java.awt.Color(0, 51, 51));
+        btnEncriptarMultas.setForeground(new java.awt.Color(255, 51, 51));
         btnEncriptarMultas.setText("ENCRIPTAR");
         btnEncriptarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEncriptarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -293,9 +294,9 @@ public class ventanaMultas extends javax.swing.JFrame {
         });
         jPanel1.add(btnEncriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
 
-        btnDesencriptarMultas.setBackground(new java.awt.Color(153, 204, 0));
+        btnDesencriptarMultas.setBackground(new java.awt.Color(51, 153, 0));
         btnDesencriptarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnDesencriptarMultas.setForeground(new java.awt.Color(0, 51, 51));
+        btnDesencriptarMultas.setForeground(new java.awt.Color(0, 0, 0));
         btnDesencriptarMultas.setText("DESENCRIPTAR");
         btnDesencriptarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDesencriptarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -304,12 +305,12 @@ public class ventanaMultas extends javax.swing.JFrame {
                 btnDesencriptarMultasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDesencriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 30));
+        jPanel1.add(btnDesencriptarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 120, 30));
 
-        btnExportarMultas.setBackground(new java.awt.Color(255, 255, 255));
-        btnExportarMultas.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnExportarMultas.setForeground(new java.awt.Color(0, 51, 51));
-        btnExportarMultas.setText("EXPORTAR A .TXT");
+        btnExportarMultas.setBackground(new java.awt.Color(44, 48, 57));
+        btnExportarMultas.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnExportarMultas.setForeground(new java.awt.Color(255, 255, 51));
+        btnExportarMultas.setText("EXPORTAR .TXT");
         btnExportarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExportarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExportarMultas.addActionListener(new java.awt.event.ActionListener() {
@@ -317,7 +318,20 @@ public class ventanaMultas extends javax.swing.JFrame {
                 btnExportarMultasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExportarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 150, 30));
+        jPanel1.add(btnExportarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 110, 30));
+
+        btnImportarMultas.setBackground(new java.awt.Color(0, 51, 51));
+        btnImportarMultas.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnImportarMultas.setForeground(new java.awt.Color(204, 255, 153));
+        btnImportarMultas.setText("IMPORTAR .TXT");
+        btnImportarMultas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImportarMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarMultasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImportarMultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 110, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -493,6 +507,7 @@ public class ventanaMultas extends javax.swing.JFrame {
 
             try {
                 listaMultas.exportarMultas(archivo.getAbsolutePath()); // listaMultas es tu ListaDobleMultas
+                
                 JOptionPane.showMessageDialog(this, "✅ Multas exportadas con éxito.");
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -500,6 +515,28 @@ public class ventanaMultas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnExportarMultasActionPerformed
+
+    private void btnImportarMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarMultasActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Selecciona las multas encriptadas");
+
+        int opcion = chooser.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                listaMultas = new ListaDobleMultas();
+                listaMultas.importarMultasDesdeArchivo(archivo, listaMultas);
+                DefaultTableModel modelo = (DefaultTableModel) tablaMultas.getModel();
+                modelo.setRowCount(0);
+               cargarMultasEnTablaDesdeLista();
+                JOptionPane.showMessageDialog(this, "✅ Multas encriptadas importadas.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al importar multas.");
+            }
+        }
+    }//GEN-LAST:event_btnImportarMultasActionPerformed
 
     public void cargarMultasEnTablaDesdeLista() {
         DefaultTableModel modelo = (DefaultTableModel) tablaMultas.getModel();
@@ -529,6 +566,7 @@ public class ventanaMultas extends javax.swing.JFrame {
     private javax.swing.JButton btnEncriptarMultas;
     private javax.swing.JButton btnExportarMultas;
     private javax.swing.JButton btnFinInicio;
+    private javax.swing.JButton btnImportarMultas;
     private javax.swing.JButton btnInicioFin;
     private javax.swing.JButton btnInsertarMulta;
     private javax.swing.JButton btnModificarMulta;

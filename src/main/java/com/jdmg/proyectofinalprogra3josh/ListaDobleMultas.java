@@ -1,6 +1,9 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
@@ -123,6 +126,31 @@ public class ListaDobleMultas {
         }
     }
 
+    public void importarMultasDesdeArchivo(File archivo, ListaDobleMultas listaMultas) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            boolean primera = true;
+
+            while ((linea = br.readLine()) != null) {
+                if (primera) { // descarta encabezado
+                    primera = false;
+                    continue;
+                }
+                String[] p = linea.split(",");
+                if (p.length >= 5) {
+                    Multa m = new Multa(
+                            p[0],
+                            p[1],
+                            p[2],
+                            p[3],
+                            Double.parseDouble(p[4])
+                    );
+                    listaMultas.agregarAlFinal(m);
+                }
+            }
+        }
+    }
+
     /**
      * Encripta todas las Multas en la lista doble.
      */
@@ -134,7 +162,7 @@ public class ListaDobleMultas {
             m.setPlaca(CryptoUtils.encrypt(m.getPlaca()));
             m.setFecha(CryptoUtils.encrypt(m.getFecha()));
             m.setDescripcion(CryptoUtils.encrypt(m.getDescripcion()));
-            
+
             String sMonto = Double.toString(m.getMonto());
             m.setMonto(Double.parseDouble(CryptoUtils.encrypt(sMonto)));
 

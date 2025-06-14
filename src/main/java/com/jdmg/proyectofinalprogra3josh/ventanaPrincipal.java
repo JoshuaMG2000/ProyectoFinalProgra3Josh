@@ -130,9 +130,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         listaMultas = new ListaDobleMultas();
         listaTraspasos = new ListaCircularTraspasos();
         btnEncriptarABB.setVisible(true);
-        btnDesencriptarABB.setVisible(false);
+        btnDesencriptarABB.setVisible(true);
         btnEncriptarAVL.setVisible(true);
-        btnDesencriptarAVL.setVisible(false);
+        btnDesencriptarAVL.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -171,10 +171,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         btnVerArbolABB = new javax.swing.JButton();
         btnVerArbolAVL = new javax.swing.JButton();
         btnExportarAVLaTXT = new javax.swing.JButton();
+        btnImportarABBEncriptado = new javax.swing.JButton();
+        btnImportarAVLEncriptado = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        cargarDatos = new javax.swing.JMenuItem();
+        itemCargarDatos = new javax.swing.JMenuItem();
         VerMultas = new javax.swing.JMenuItem();
         VerTraspasos = new javax.swing.JMenuItem();
 
@@ -364,10 +366,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jtextFieldPlacaAVL.setText("Ingrese No. Placa");
         jPanel1.add(jtextFieldPlacaAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 410, 170, 30));
 
-        btnExportarABBaTXT.setBackground(new java.awt.Color(153, 153, 153));
+        btnExportarABBaTXT.setBackground(new java.awt.Color(44, 48, 57));
         btnExportarABBaTXT.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnExportarABBaTXT.setForeground(new java.awt.Color(0, 0, 0));
-        btnExportarABBaTXT.setText("EXPORTAR ABB A .TXT");
+        btnExportarABBaTXT.setForeground(new java.awt.Color(255, 255, 51));
+        btnExportarABBaTXT.setText("EXPORTAR A.TXT");
         btnExportarABBaTXT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExportarABBaTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExportarABBaTXT.addActionListener(new java.awt.event.ActionListener() {
@@ -375,7 +377,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnExportarABBaTXTActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExportarABBaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, 30));
+        jPanel1.add(btnExportarABBaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, 30));
 
         btnPreOrdenAVL.setBackground(new java.awt.Color(44, 48, 57));
         btnPreOrdenAVL.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -457,9 +459,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel8.setToolTipText("");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1340, 50));
 
-        btnEncriptarABB.setBackground(new java.awt.Color(204, 204, 0));
+        btnEncriptarABB.setBackground(new java.awt.Color(51, 51, 51));
         btnEncriptarABB.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnEncriptarABB.setForeground(new java.awt.Color(0, 102, 153));
+        btnEncriptarABB.setForeground(new java.awt.Color(255, 51, 51));
         btnEncriptarABB.setText("ENCRIPTAR");
         btnEncriptarABB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEncriptarABB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -468,9 +470,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnEncriptarABBActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEncriptarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 340, 110, 30));
+        jPanel1.add(btnEncriptarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 110, 30));
 
-        btnDesencriptarABB.setBackground(new java.awt.Color(204, 204, 0));
+        btnDesencriptarABB.setBackground(new java.awt.Color(51, 153, 0));
         btnDesencriptarABB.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnDesencriptarABB.setForeground(new java.awt.Color(0, 0, 0));
         btnDesencriptarABB.setText("DESENCRIPTAR");
@@ -483,9 +485,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnDesencriptarABB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 340, 110, 30));
 
-        btnEncriptarAVL.setBackground(new java.awt.Color(204, 204, 0));
+        btnEncriptarAVL.setBackground(new java.awt.Color(51, 51, 51));
         btnEncriptarAVL.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnEncriptarAVL.setForeground(new java.awt.Color(0, 102, 153));
+        btnEncriptarAVL.setForeground(new java.awt.Color(255, 51, 51));
         btnEncriptarAVL.setText("ENCRIPTAR");
         btnEncriptarAVL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEncriptarAVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -494,9 +496,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnEncriptarAVLActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEncriptarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 110, 30));
+        jPanel1.add(btnEncriptarAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 680, 110, 30));
 
-        btnDesencriptarAVL.setBackground(new java.awt.Color(204, 204, 0));
+        btnDesencriptarAVL.setBackground(new java.awt.Color(51, 153, 0));
         btnDesencriptarAVL.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnDesencriptarAVL.setForeground(new java.awt.Color(0, 0, 0));
         btnDesencriptarAVL.setText("DESENCRIPTAR");
@@ -535,10 +537,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnVerArbolAVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 100, 30));
 
-        btnExportarAVLaTXT.setBackground(new java.awt.Color(153, 153, 153));
+        btnExportarAVLaTXT.setBackground(new java.awt.Color(44, 48, 57));
         btnExportarAVLaTXT.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnExportarAVLaTXT.setForeground(new java.awt.Color(0, 0, 0));
-        btnExportarAVLaTXT.setText("EXPORTAR AVL A .TXT");
+        btnExportarAVLaTXT.setForeground(new java.awt.Color(255, 255, 51));
+        btnExportarAVLaTXT.setText("EXPORTAR A .TXT");
         btnExportarAVLaTXT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExportarAVLaTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExportarAVLaTXT.addActionListener(new java.awt.event.ActionListener() {
@@ -546,7 +548,33 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 btnExportarAVLaTXTActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExportarAVLaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 680, -1, 30));
+        jPanel1.add(btnExportarAVLaTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 680, -1, 30));
+
+        btnImportarABBEncriptado.setBackground(new java.awt.Color(0, 51, 51));
+        btnImportarABBEncriptado.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnImportarABBEncriptado.setForeground(new java.awt.Color(204, 255, 153));
+        btnImportarABBEncriptado.setText("IMPORTAR .TXT");
+        btnImportarABBEncriptado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarABBEncriptado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImportarABBEncriptado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarABBEncriptadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImportarABBEncriptado, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 100, 30));
+
+        btnImportarAVLEncriptado.setBackground(new java.awt.Color(0, 51, 51));
+        btnImportarAVLEncriptado.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnImportarAVLEncriptado.setForeground(new java.awt.Color(204, 255, 153));
+        btnImportarAVLEncriptado.setText("IMPORTAR .TXT");
+        btnImportarAVLEncriptado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarAVLEncriptado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImportarAVLEncriptado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarAVLEncriptadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImportarAVLEncriptado, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 680, 100, 30));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jgald\\Downloads\\final.png")); // NOI18N
@@ -559,15 +587,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("DATOS");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        cargarDatos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cargarDatos.setText("CARGAR  CARPETA");
-        cargarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarDatos.addActionListener(new java.awt.event.ActionListener() {
+        itemCargarDatos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        itemCargarDatos.setText("CARGAR  CARPETA");
+        itemCargarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        itemCargarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarDatosActionPerformed(evt);
+                itemCargarDatosActionPerformed(evt);
             }
         });
-        jMenu1.add(cargarDatos);
+        jMenu1.add(itemCargarDatos);
 
         VerMultas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         VerMultas.setText("VER MULTAS");
@@ -928,7 +956,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExportarABBaTXTActionPerformed
 
-    private void cargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarDatosActionPerformed
+    private void itemCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCargarDatosActionPerformed
 
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -959,7 +987,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             ventanaTraspasos.llenarTraspasos(listaTraspasos);
 
         }
-    }//GEN-LAST:event_cargarDatosActionPerformed
+    }//GEN-LAST:event_itemCargarDatosActionPerformed
 
 
     private void btnPreOrdenAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreOrdenAVLActionPerformed
@@ -1046,6 +1074,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_VerTraspasosActionPerformed
 
+
     private void btnEncriptarABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarABBActionPerformed
         cronometro.iniciar();
         arbolito.encryptABB();
@@ -1092,7 +1121,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDesencriptarAVLActionPerformed
 
     private void btnVerArbolAVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerArbolAVLActionPerformed
-
+        cronometro.iniciar();
+        arbolitoAVL.exportarAVLComoImagen(arbolitoAVL);
+        JOptionPane.showMessageDialog(this, cronometro.detenerComoTexto());
     }//GEN-LAST:event_btnVerArbolAVLActionPerformed
 
     private void btnVerArbolABBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerArbolABBActionPerformed
@@ -1118,6 +1149,52 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnExportarAVLaTXTActionPerformed
+
+    private void btnImportarABBEncriptadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarABBEncriptadoActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Selecciona el ABB encriptado");
+
+        int opcion = chooser.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                arbolito = new ArbolBinario();
+                arbolito.importarABBEDesdeArchivo(archivo, arbolito);
+                DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosABB.getModel();
+                modelo.setRowCount(0);
+                llenarTablaDesdeABB(arbolito.raiz, modelo);
+                JOptionPane.showMessageDialog(this, "✅ ABB encriptado importado.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al importar ABB.");
+            }
+        }
+        btnEncriptarABB.setVisible(true);
+        btnDesencriptarABB.setVisible(true);
+    }//GEN-LAST:event_btnImportarABBEncriptadoActionPerformed
+
+    private void btnImportarAVLEncriptadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAVLEncriptadoActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Selecciona el AVL encriptado");
+
+        int opcion = chooser.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+
+            try {
+                arbolitoAVL = new ArbolBinarioAVL();
+                arbolitoAVL.importarAVLDesdeArchivo(archivo, arbolitoAVL);
+                DefaultTableModel modelo = (DefaultTableModel) tablaVehiculosAVL.getModel();
+                modelo.setRowCount(0);
+                llenarTablaDesdeAVL(arbolitoAVL.getRaiz(), modelo);
+                JOptionPane.showMessageDialog(this, "✅ AVL encriptado importado.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al importar AVL.");
+            }
+        }
+    }//GEN-LAST:event_btnImportarAVLEncriptadoActionPerformed
 
     private void llenarTablaInOrdenAVL(NodoArbolAVL nodo, DefaultTableModel modelo) {
         if (nodo != null) {
@@ -1170,6 +1247,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEncriptarAVL;
     private javax.swing.JButton btnExportarABBaTXT;
     private javax.swing.JButton btnExportarAVLaTXT;
+    private javax.swing.JButton btnImportarABBEncriptado;
+    private javax.swing.JButton btnImportarAVLEncriptado;
     private javax.swing.JButton btnInOrdenABB;
     private javax.swing.JButton btnInOrdenAVL;
     private javax.swing.JButton btnInsertarABB;
@@ -1184,8 +1263,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVerArbolAVL;
     private javax.swing.JButton btnbuscarABB;
     private javax.swing.JButton btnbuscarAVL;
-    private javax.swing.JMenuItem cargarDatos;
     private javax.swing.JLabel fondo;
+    private javax.swing.JMenuItem itemCargarDatos;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

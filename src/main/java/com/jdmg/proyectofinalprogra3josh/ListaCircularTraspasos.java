@@ -1,8 +1,11 @@
 package com.jdmg.proyectofinalprogra3josh;
 
+import java.io.BufferedReader;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -166,6 +169,33 @@ public class ListaCircularTraspasos {
                     bw.newLine();
                     aux = aux.siguiente;
                 } while (aux != primero);
+            }
+        }
+    }
+
+    public void importarTraspasosDesdeArchivo(File archivo, ListaCircularTraspasos listaTraspasos) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            boolean primera = true;
+
+            while ((linea = br.readLine()) != null) {
+                if (primera) { // descarta encabezado
+                    primera = false;
+                    continue;
+                }
+                String[] p = linea.split(",");
+                if (p.length >= 7) {
+                    Traspaso t = new Traspaso(
+                            p[0],
+                            p[1],
+                            p[2],
+                            p[3],
+                            p[4],
+                            p[5],
+                            p[6]
+                    );
+                    listaTraspasos.insertarAlFinal(t);
+                }
             }
         }
     }

@@ -1,8 +1,10 @@
 package com.jdmg.proyectofinalprogra3josh;
 
 import java.awt.Desktop;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -237,6 +239,35 @@ public class ArbolBinario {
         ));
         bw.newLine();
         exportarNodoABB(nodo.HijoDerecho, bw);
+    }
+
+    public void importarABBEDesdeArchivo(File archivo, ArbolBinario abb) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            boolean primera = true;
+
+            while ((linea = br.readLine()) != null) {
+                if (primera) { // descarta encabezado
+                    primera = false;
+                    continue;
+                }
+                String[] p = linea.split(",");
+                if (p.length >= 9) {
+                    Vehiculos v = new Vehiculos(
+                            p[0],
+                            p[1],
+                            p[2],
+                            p[3],
+                            p[4],
+                            p[5],
+                            Integer.parseInt(p[6]),
+                            Integer.parseInt(p[7]),
+                            Integer.parseInt(p[8])
+                    );
+                    abb.insertarVehiculo(v);
+                }
+            }
+        }
     }
 
     /**
