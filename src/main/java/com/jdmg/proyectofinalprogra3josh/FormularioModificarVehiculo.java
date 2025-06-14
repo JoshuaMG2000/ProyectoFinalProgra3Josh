@@ -32,6 +32,8 @@ public class FormularioModificarVehiculo extends javax.swing.JDialog {
         txtAnio.setText(String.valueOf(vehiculo.getAnio()));
         txtMultas.setText(String.valueOf(vehiculo.getCantidadMultas()));
         txtTraspasos.setText(String.valueOf(vehiculo.getCantidadTraspasos()));
+        txtMultas.setEditable(false);
+        txtTraspasos.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
